@@ -1,7 +1,7 @@
 .img-circular {
     width: 230px;
     height: 230px;
-    background-image: url('http://ecolell.github.io/images/pic.jpg');
+    background-image: url('http://ecolell.github.io/assets/images/pic.jpg');
     background-size: cover;
     display: block;
     border-radius: 120px;
@@ -38,17 +38,17 @@ h1 {
 }
 
 .github {
-  background: url("http://ecolell.github.io/images/social.png") -95px -107px no-repeat;
+  background: url("http://ecolell.github.io/assets/images/social.png") -95px -107px no-repeat;
 }
 
 .linkedin {
-  background: url("http://ecolell.github.io/images/social.png") -405px -31px no-repeat;
+  background: url("http://ecolell.github.io/assets/images/social.png") -405px -31px no-repeat;
 }
 
 .twitter {
-  background: url("http://ecolell.github.io/images/social.png") -18px -31px no-repeat;
+  background: url("http://ecolell.github.io/assets/images/social.png") -18px -31px no-repeat;
 }
 
 .googleplus {
-  background: url("http://ecolell.github.io/images/social.png") -561px -107px no-repeat;
+  background: url("http://ecolell.github.io/assets/images/social.png") -561px -107px no-repeat;
 }
