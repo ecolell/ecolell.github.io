@@ -25,9 +25,16 @@ h1 {
 .social {
     display: inline-block;
     margin: 2px;
-    width: 71px;
-    height: 71px;
+    width: 70px;
+    height: 70px;    
+    border-radius: 120px;
+    -webkit-border-radius: 120px;
+    -moz-border-radius: 120px;
+    -webkit-filter: sepia(50%);
+}
 
+.social:hover {
+    -webkit-filter: sepia(0%) blur(1px) brightness(1.05) contrast(1.23);
 }
 
 .github {
@@ -39,9 +46,9 @@ h1 {
 }
 
 .twitter {
-  background: url("http://ecolell.github.io/images/social.png") -16px -31px no-repeat;
+  background: url("http://ecolell.github.io/images/social.png") -18px -31px no-repeat;
 }
 
 .googleplus {
-  background: url("http://ecolell.github.io/images/social.png") -559px -107px no-repeat;
+  background: url("http://ecolell.github.io/images/social.png") -561px -107px no-repeat;
 }
