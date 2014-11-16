@@ -1,14 +1,22 @@
 .img-circular {
-    width: 200px;
-    height: 200px;
+    width: 230px;
+    height: 230px;
     background-image: url('http://ecolell.github.io/images/pic.jpg');
     background-size: cover;
     display: block;
-    border-radius: 100px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
+    border-radius: 120px;
+    -webkit-border-radius: 120px;
+    -moz-border-radius: 120px;
 }
 
 h1 {
     margin-top: 1.5em;
+}
+
+.social {
+  margin: .5em .2em .35em .5em;
+}
+
+.twitter {
+  background: url("http://ecolell.github.io/images/social.png") 0 0px no-repeat;
 }
