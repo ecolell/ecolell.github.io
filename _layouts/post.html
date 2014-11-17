@@ -1,3 +1,15 @@
-<div class="post">
-  {{ content }}
-</div>
+<!doctype html>
+<html>
+  {% include head.html %}
+  <body>
+    <div class="wrapper">
+      {% include header.html %}
+      <section>
+      <div class="post">
+        {{ content }}
+      </div>
+      </section>
+      {% include footer.html %}
+    </div>
+  </body>
+</html>
