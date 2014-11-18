@@ -18,15 +18,15 @@ h1 {
 }
 
 .social-links a {
-    width: 71px;
-    height: 71px;
+    width: 43px;
+    height: 43px;
 }
 
 .social {
     display: inline-block;
     margin: 2px;
-    width: 70px;
-    height: 70px;    
+    width: 43px;
+    height: 43px; 
     border-radius: 120px;
     -webkit-border-radius: 120px;
     -moz-border-radius: 120px;
@@ -38,21 +38,29 @@ h1 {
 }
 
 .github {
-  background: url("http://ecolell.github.io/assets/images/social.png") -95px -107px no-repeat;
+  background: url("/assets/images/social.png") -546px -223px no-repeat;
 }
 
 .linkedin {
-  background: url("http://ecolell.github.io/assets/images/social.png") -405px -31px no-repeat;
+  background: url("/assets/images/social.png") -168px -331px no-repeat;
 }
 
 .twitter {
-  background: url("http://ecolell.github.io/assets/images/social.png") -18px -31px no-repeat;
+  background: url("/assets/images/social.png") -546px -547px no-repeat;
 }
 
 .googleplus {
-  background: url("http://ecolell.github.io/assets/images/social.png") -561px -107px no-repeat;
+  background: url("/assets/images/social.png") -61px -278px no-repeat;
 }
 
 .instagram {
-  background: url("http://ecolell.github.io/assets/images/social.png") -405px -107px no-repeat;
+  background: url("/assets/images/social.png") -6px -331px no-repeat;
+}
+
+.stackoverflow {
+  background: url("/assets/images/social.png") -330px -547px no-repeat;
+}
+
+.skype {
+  background: url("/assets/images/social.png") -438px -493px no-repeat;
 }
