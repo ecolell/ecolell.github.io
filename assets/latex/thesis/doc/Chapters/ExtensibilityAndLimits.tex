@@ -1,0 +1,95 @@
+% Chapter 6
+
+\chapter{Extensibilidad y límites}
+% Write in your own chapter title
+\label{Capitulo 6}
+\lhead{Capitulo 6. \emph{Extensibilidad y límites}} % Write in your own chapter title to set the page header
+
+Como consecuencia de la librería presentada se desprenden posibles desarrollos y extensiones que podrían mejorar la adaptabilidad al contexto, o por otra parte, la privacidad y la seguridad del usuario.
+
+Por otra parte, dado que al realizar la librería se han tomado ciertas decisiones de diseño, habrá limites que no podrán ser solucionados mediante las extensiones. Por esto, es necesario describir cuales serán los límites de la librería con motivo de determinar el alcance de la solución planteada.
+
+A continuación se presentan algunas de las extensiones posibles relacionadas con las distintas lineas de investigación en las que se sostiene esta tesis. Por último se prosigue con la descripción de los limites encontrados y se mencionan que características de la sensibilidad al contexto no podrán utilizarse si se mantiene lo propuesto en esta tesis.
+
+
+\section{Extensibilidad}
+
+Al momento de desarrollar la librería surgieron diferentes ideas que son las que le dieron forma, pero también existieron otras opciones que fueron pospuestas en pos de acotar el alcance de la tesis.
+
+Estas posibles extensiones pueden ser clasificadas en: las que agregan nuevos \emph{sensores} al navegador web mediante \emph{plugins}; y las que mejoran la privacidad y seguridad del usuario.
+
+En el primer grupo, se encuentran aquellos nuevos sensores que permitirán reconocer de forma mas precisa el contexto. Estos sensores podrán reconocer distintas características del contexto como la temperatura, la humedad, la presión atmosférica, u otros entornos aún no pensados.
+
+Dentro de este mismo grupo, también se pueden crear sensores que notifiquen a cada aplicación web los recursos con los que cuenta para realizar su ejecución, y así proporcionarle mayor información sobre las capacidades que el dispositivo está dispuesto a proporcionarle en un momento particular. Por ejemplo, notificarle cuando se le brinda mas capacidad de procesamiento o cuando se le quita dicho recurso.
+
+Dicha información permitirá establecer requisitos mínimos sobre ciertos recursos del dispositivo móvil, permitiendo descartar ciertas adaptaciones si es que el dispositivo no es capaz de procesarlas de forma adecuada.
+
+A su vez, al profundizar este último caso, es necesario contemplar la ejecución en paralelo de distintas aplicaciones web e identificar la necesidad de un método que permita su \emph{interacción} (semejante a lo planteado por \emph{Efstratiou}\cite[p.~5]{Efstratiou04}).
+
+En el segundo grupo, se encuentran aquellas ideas que modifiquen la administración de privacidad relacionada con los sensores, mediante una mayor flexibilidad de la interfaz gráfica o a través de la simplificación la interacción con el usuario.
+
+Existen varias alternativas de investigación dentro de este grupo. Primero, sería interesante evaluar si la utilización del patrón de diseño \emph{Composite}\cite[p.~151]{Gamma95} mejora la interfaz de administración de permisos. Luego, queda pendiente verificar si la utilización de \emph{permisos asociativos}\footnote{El \emph{permiso asociativo} consiste en definir el permiso de una aplicación A a partir de los permisos concedidos a otras aplicaciones B y C.} simplifica la administración de accesos o solo le quita transparencia al proceso. Por último, quedaría corroborar como afectan estas nuevas estrategias de permisos y accesos al \emph{Same Origin Policy (SOP)}\footnote{
+La \emph{Same Origin Policy} es una regla que establece que un \emph{script} de Javascript solo se pueda acceder a los métodos y propiedades asociados a su origen, restringiendo el intercambio de información entre scripts de distintos orígenes.} presente en los navegadores web.
+
+Dentro de ésta segunda agrupación, cada modificación puede ser evaluada teniendo en cuenta la usabilidad que le proporciona al usuario y la maleabilidad para establecer permisos entre las distintas aplicaciones web.
+
+
+\subsection{Interacción entre aplicaciones web}
+
+En el uso cotidiano de un navegador web es habitual la carga y ejecución en simultaneo de varias aplicaciones web, aunque se visualice solo una de ellas. Estas ejecuciones concurrentes de aplicaciones, combinadas de forma inadecuada con la adaptación al contexto, puede producir los inconvenientes ya planteados por \emph{Efstratiou}\cite[p.~5]{Efstratiou04}.
+
+En particular, \emph{Efstratiou} presenta un escenario en donde existen una aplicación sensible al consumo energético y otra que es sensible al ancho de banda de una red inalámbrica (por ejemplo un reproductor de música de una radio online).
+
+En un punto de la ejecución, la primer aplicación reduce el consumo de ancho de banda de la red con el fin de reducir el consumo energético. Al instante sucesivo, la segunda aplicación encuentra que puede aumentar la calidad del audio dado que el sistema dispone de un mayor ancho de banda recientemente libreado por la primer aplicación.
+
+Como resultado de estas adaptaciones independientes, las acciones de adaptación de la primera aplicación serán canceladas por las adaptaciones realizadas de la segunda. Para sobrellevar esto \emph{Efstratiou} plantea una solución en conjunto en donde se contemplan los requisitos y las prioridades de cada aplicación \cite[p.~58]{Efstratiou04}. En esta linea queda pendiente analizar la solución teniendo en cuenta la utilización de continuations y los requisitos de seguridad existentes en los navegadores web.
+
+Esta última linea, a su vez, se puede continuar mediante el análisis de la capacidad de intercomunicar dos aplicaciones web mediante un canal proporcionado por el navegador web.
+
+Un canal de tales características podría mejorar el rendimiento de ambas aplicaciones al proveer un mecanismo de sincronización, este mecanismo podría permitir la colaboración entre las distintas aplicaciones web y por consecuencia evitar el procesamiento por duplicado.
+
+En este tipo de comunicación entre aplicaciones, también debería contemplarse algún tipo de control para mantener la seguridad de la aplicación.
+
+
+\subsubsection{Administración de permisos mediante Composite}
+
+Teniendo en cuenta que el diseño presentado promociona la creación de una gran cantidad de sensores, en un futuro surgirá la necesidad de mejorar la administración de accesos para que un usuario sea capaz de discernir y decidir que información desea compartir con cada una de las aplicaciones web.
+
+El módulo de administración tendrá que considerar que cada aplicación web puede requerir una configuración distinta de accesos, y deberá evaluar cada cuando tiempo un usuario modifica los permisos ya concedidos para una aplicación web particular.
+
+El patrón de diseño Composite puede ser una estructura válida para proveer una gran granularidad en el control de los permisos y aún así, en caso de necesidad, permitir la abstracción mediante la agrupación de alguno de estos permisos; ya sean estos simples o consecuencia de otra agrupación previa.
+
+En este planteo se deberá investigar si existen grupos de permisos que se repiten en diferentes aplicaciones. Y, por otra parte, si la agrupación en si misma simplifica la tarea de configuración de permisos que suele llevar a cabo el usuario.
+
+
+\subsubsection{Permisos asociativos}
+
+Ya sea como complemento del caso anterior, o como investigación individual, puede llegar a tener cierta connotación la posibilidad de determinar los permisos de una aplicación web a partir de la unión de permisos de una o mas aplicaciones web.
+
+En este tipo de estrategia de administración el foco se centra en establecer los permisos a partir de semejanzas con otras aplicaciones web. Dada una aplicación web que fue desarrollada por una organización, una segunda aplicación web de esta organización recibiría como mínimo los mismos permisos que la primera aplicación desarrollada.
+
+Y, mediante este enfoque, el usuario podría establecer explícitamente desde una interfaz gráfica que los permisos de la segunda aplicación web son idénticos a los de la primera. De esta forma, si los permisos concedidos a la primera se modificasen, la segunda aplicación web automáticamente conocería las mismas restricciones.
+
+En esta linea se deberá analizar si el usuario es capaz de discernir en todo momento los permisos que se encuentra administrando.
+
+
+\subsubsection{Estrategias para extender el Same Origin Policy}
+
+Aunque en el ejemplo considerado en el capítulo \ref{Capitulo 5} toda la aplicación se descarga desde el mismo \emph{origen}\footnote{Un \emph{orígen} se encuentra definido por el \emph{dominio}, \emph{puerto} y el \emph{protocolo} utilizados en una \emph{URL} particular.}, es posible que en otros casos la aplicación web se descargue desde múltiples \emph{orígenes}. Teniendo en cuenta dicha situación, es necesario evaluar una solución que permita conceder distintos niveles de permisos para cada origen.
+
+Dos posibles soluciones a este problema podrían ser: permitir solo al origen principal acceder a la información de los sensores, o distinguir orígenes secundarios y permitir una administración de permisos mas detallada.
+
+En la primer solución, será necesario realizar la extensión correspondiente a la Same Origin Policy bloqueando cualquier tipo de acceso a los orígenes secundarios.
+
+Por otra parte, para la segunda solución, deberán considerarse alternativas mas dinámicas de administración de permisos que simplifiquen y clarifiquen las selecciones realizadas por el usuario en cuanto a la información que desea compartir. En este punto volverían a tener vigencia tanto los \emph{permisos asociativos}, como los \emph{permisos mediante Composite}.
+
+
+\section{Limites}
+
+Al considerar la flexibilidad proporcionada por la creación de nuevos sensores, también es necesario analizar cuales serán los limites de este diseño.
+
+La base del diseño consiste en que la aplicación web proporcione una mayor privacidad al usuario al utilizar \emph{triggers} y notificar al servidor solo en caso de que un \emph{entorno} se cumpla.
+
+Al proteger la información de los sensores manteniéndola del lado del cliente y solo notificar lo indispensable al servidor, este último nunca recibirá información como para realizar un análisis complejo que le permita detectar nuevos patrones de comportamiento del cliente.
+
+Esta situación es la que determina que el servidor nunca podrá implementar la característica evolutiva de la sensibilidad al contexto.
