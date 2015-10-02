@@ -1,4 +1,4 @@
-% start of file `template_en.tex'.
+	% start of file `template_en.tex'.
 % Copyright 2007 Xavier Danaux (xdanaux@gmail.com).
 %
 % This work may be distributed and/or modified under the
@@ -7,6 +7,7 @@
 
 
 \documentclass[11pt,a4paper]{moderncv}
+\usepackage{CJK}
 
 % moderncv themes
 %\moderncvtheme[blue]{casual}                 % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
@@ -42,13 +43,14 @@
 %            content
 %----------------------------------------------------------------------------------
 \begin{document}
+
 \maketitle
 
 \hyphenation{Fa-cul-tad}
 
 \section{Formación Académica}
 % \cventry{year--year}{Degree}{Institution}{City}{\textit{Grade}}{Description}  % arguments 3 to 6 are optional
-\cventry{2014--\ \ \ \ \ \ }{Master en Bioinformática y Biología de Sistemas}{Universidad Nacional del Noroeste de la Provincia de Buenos Aires}{Pergamino}{}{}
+\cventry{2014--\ \ \ \ \ \ }{Master en Bioinformática y Biología de Sistemas}{Universidad Nacional del Noroeste de la Provincia de Buenos Aires}{Pergamino}{288 hs cursadas / 576 hs}{}
 \cventry{2005--2013}{Licenciado en Sistemas de Información}{Universidad Nacional de Luján}{Luján}{}{}
 \cventry{2002--2005}{Analista de Sistemas de Información}{Universidad Nacional de Luján}{Pergamino}{}{}
 \cventry{1999--2001}{Bachiller Polimodal en Ciencias Naturales}{Institulo Comercial Rancagua}{Rancagua}{}{}
@@ -94,7 +96,10 @@ Lenguajes utilizados: C (embebido en ARM), Ruby, Java (para Android).}
 
 \section{Idiomas}
 % \cvlanguage{language 1}{Skill level}{Comment}
-\cvlanguage{Inglés}{Intermedio}{}
+\cvlanguage{English}{Middle level}{}
+\begin{CJK}{UTF8}{gbsn}
+\cvlanguage{汉语}{初始水平}{}
+\end{CJK}
 
 \section{Referencias}
 \cventry{Dr. Alejandro Fernández}{alejandro.fernandez@lifia.info.unlp.edu.ar}{}{}{}{}
