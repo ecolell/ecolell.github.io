@@ -1,0 +1,140 @@
+	% start of file `template_en.tex'.
+% Copyright 2007 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper]{moderncv}
+
+% moderncv themes
+%\moderncvtheme[blue]{casual}                 % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
+\moderncvtheme[blue]{classic}                % idem
+\usepackage[bottom]{footmisc}
+
+% character encoding
+
+\usepackage[utf8]{inputenc}                   % replace by the encoding you are using
+\usepackage{CJK}
+
+% adjust the page margins
+\usepackage[scale=0.8]{geometry}
+\recomputelengths                             % required when changes are made to page layout lengths
+
+% personal data
+\firstname{Eloy Adonis}
+\familyname{Colell}
+\title{Licentiate degree in \protect\\Information Systems}        % optional, remove the line if not wante
+\address{San Nicolás 2310}{B2700LCR, Pergamino}    % optional, remove the line if not wanted
+\mobile{02477 15536539}                            % optional, remove the line if not wanted
+% \phone{phone (optional)}                    % optional, remove the line if not wanted
+% \fax{fax (optional)}                        % optional, remove the line if not wanted
+\email{eloy.colell.jobs@gmail.com}                      % optional, remove the line if not wanted
+\homepage{ecolell.github.io}
+\extrainfo{32 years old} % optional, remove the line if not wanted
+\photo[50pt]{foto/fotoCarnet5.jpg}                % '64pt' is the height the picture must be resized to and 'picture' is the name of the picture file; optional, remove the line if not wanted
+% \quote{Some quote (optional)}               % optional, remove the line if not wanted
+
+%\nopagenumbers{}                              % uncomment to suppress automatic page numbering for CVs longer than one page
+
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\hyphenation{Fa-cul-ty}
+
+\section{Academic Formation}
+% \cventry{year--year}{Degree}{Institution}{City}{\textit{Grade}}{Description}  % arguments 3 to 6 are optional
+\cventry{2014--\ \ \ \ \ \ }{Master Degree in Bioinformatics and Biology Systems}{Universidad Nacional del Noroeste de la Provincia de Buenos Aires}{Pergamino}{364 hs cursadas / 576 hs}{}
+\cventry{2005--2013}{Licenciate Degree in Information Systems}{Universidad Nacional de Luján}{Luján}{}{}
+\cventry{2002--2005}{Bachelor Degree in Information Systems Analyst}{Universidad Nacional de Luján}{Pergamino}{}{}
+\cventry{1999--2001}{High school Title oriented to Natural Sciences}{Institulo Comercial Rancagua}{Rancagua}{}{}
+\cventry{1997--1998}{Basic General Education}{School $N^{o}$ 54}{Rancagua}{}{}
+\cventry{1989--1996}{Basic General Education}{School $N^{o}$ 62}{Pergamino}{}{}
+
+% section{Master thesis}
+% \cvline{title}{\emph{Title}}
+% \cvline{supervisors}{Supervisors}
+% \cvline{description}{\small Short thesis abstract}
+
+\section{Academic Expertise}
+% \cventry{year--year}{Job title}{Employer}{City}{}{Description}  % arguments 3 to 6 are optional
+\cventry{2013}{Adaptability to the context in web applications based on Continuations}{Licentiate Degree Thesis}{}{}{It present a model to work with context-aware adaptations in web applications through continuations, while it try to mantain the privacy of the web application user.}
+\cventry{2012}{Calculate Solar Radiation through imágenes of a MSG satellite}{Specialization course in satellite image processing at the University of Jaen (Spain)} {} {} {We replicated a study already done on the area of Andalusia (Spain) using satellite images Meteosat Second Generation.}
+\cventry{2011}{Coaching and Leadership Seminar}{Dictated by Lic. Fabiola Robin Marquez}{}{}{This course introduces the types of leadership, motivation, influence, conflict / mediation / resolution, decision-making and coaching.}
+\cventry{2010}{Geostatistic Basic Concepts}{Update Seminar II}{}{}{I write a document to introduce the basic concepts of geostatistic to other professionals.}
+\cventry{2009}{Fundamentals of testing and functional testing techniques}{Centro de Ensayos de Software}{}{}{Coursed at the Faculty of Informatics, University of La Plata.}
+\cventry{2006}{South Supermarkets}{Computer Lab III}{}{}{Implemented in Apache / PHP / JavaScript, it is an application that manages a virtual supermarket.}
+\cventry{2006}{DES Solar Energy}{Expert systems}{}{}{It is an application that allows to estimate the size of a home electric system based on solar energy using the experience of Ing. Raul Righini (UNLu). The implementation was done in VisualWorks Smalltalk.}
+\cventry{2006}{TSP with Genetic Algorithm v1.0}{Artificial intelligence}{}{}{It is an application that tries to solve the "Travelling Salesman Problem" using genetic algorithms. Implemented in VisualWorks Smalltalk.}
+\cventry{2006}{Tetris v1.2}{Object Oriented Programming}{}{}{This is a simple version of tetris. It was implemented in VisualWorks Smalltalk.}
+\cventry{2005}{Roberto Insausti SA (Pergamino)}{Professional seminar}{}{}{Analysis and design of possible solutions to the company Roberto Insausti SA.}
+\cventry{2004}{Gnat v1.4}{Update Seminar I}{}{}{This is a graphical application showing a reactive simulation of a mosquitou's behavior. Implemented in Delphi.}
+\cventry{2003}{Library System v4}{Applied programming}{}{}{It is a non-graphical application that manages a simple library system. Implemented in Perl and Firebird.}
+\cventry{2002}{Diary v1.2}{Algorithmic Programming I}{}{}{This is a graphical application to handle an agenda that runs under console. Implemented in Basic.}
+
+\section{Jobs Timeline}
+% \cventry{year--year}{Job title}{Employer}{City}{}{Description}  % arguments 3 to 6 are optional
+\cventry{2012--present}{Lead Software Developer at \href{http://www.gersol.unlu.edu.ar}{GERSolar}}{Universidad Nacional de Luján}{Luján}{}{I have worked on developing an architecture of satellite image processing, which has to estimate solar radiation at ground level, for the whole area of Argentina. Git: https://github.com/gersolar. Reference: raulrighini@yahoo.com.ar}
+\cventry{2010--2012}{Researcher en el \href{http://limiear.github.io}{LIMIE}}{}{Pergamino}{}{I have collaborated in the development of a device for the blind.
+Languages used: C (ARM-embbeded), Ruby, Java (Android).}
+\cventry{2007--2009}{Laboratory assistant at \href{http://lifia.info.unlp.edu.ar}{LIFIA}}{Universidad Nacional de La Plata}{La Plata}{}{I was part of the development of a testing platform for slot machines. Languages used: C ++, Python, Lua. Reference: federico.balaguer@lifia.info.unlp.edu.ar.}
+\cventry{2008}{Collaborator in the Object Orientation 1 course}{Universidad Nacional de La Plata}{La Plata}{}{I worked as a collaborator helping students in understanding the practical exercises and resolutions. Language used: Smalltalk.}
+\cventry{2006--2008}{Second assistant in the Programming III course}{Universidad Nacional de Luján}{Luján}{}{I worked as an assistant in the practice of the course. Languages used: Smalltalk, Java. Reference: alejandro.fernandez@lifia.info.unlp.edu.ar.}
+
+\section{Knowledges}
+\cvcomputer{Modeling}{\textbf{design patterns, refactoring}}{DB}{\textbf{firebird, mysql, postgresql, sqlite3}}
+\cvcomputer{Services}{\textbf{apache, subversion, git}}{Virtualization}{\textbf{virtualbox, kvm}}
+\cvcomputer{Networking}{\textbf{tcp/ip, route, nat, filters, iptables}}{OS}{\textbf{gnu/linux, osx, windows}}
+\cvcomputer{Weak typing languages}{\textbf{javascript (prototype, jquery), lisp, lua, octave, perl, php, prolog, python (django), ruby (rails, wee), smalltalk (seaside, meteoroid), xml, xsl}}{Strong typing languages}{\textbf{assembly, c/c++ (boost, asio, stl, lpc1343), delphi, java (android), \LaTeX, visual basic}}
+\cvcomputer{Utilities}{\textbf{gimp, vim, html, css, ssh, makefile}}{}{}
+
+\section{Languages}
+% \cvlanguage{language 1}{Skill level}{Comment}
+\cvlanguage{Español}{Nativo}{}
+\cvlanguage{English}{Middle level}{}
+\begin{CJK}{UTF8}{gbsn}
+\cvlanguage{汉语}{初始水平}{}
+\end{CJK}
+
+\section{Reference}
+\cventry{Dr. Alejandro Fern{\'a}ndez}{alejandro.fernandez@lifia.info.unlp.edu.ar}{}{}{}{}
+\cventry{Dr. Federico Balaguer}{federico.balaguer@lifia.info.unlp.edu.ar}{}{}{}{}
+\cventry{Mg. Gabriel Tolosa}{tolosoft@unlu.edu.ar}{}{}{}{}
+\cventry{Mg. Fernando Bordignon}{fernando.bordignon@gmail.com}{}{}{}{}
+\cventry{Dr. Ra{\'u}l Righini}{raulrighini@yahoo.com.ar}{}{}{}{}
+
+%% \section{Aficiones}
+%% % \cvline{hobby 1}{\small Description}
+%% \cvline{Guitarra}{\small Formación elemental tanto de Guitarra Clásica como de Solfeo.}
+%% \cvline{Pintura}{\small Asistencia a cursos de pintura durante un periodo de 5 años.}
+%% \cvline{Deportes}{\small Aficionado a todos los deportes. Practico paddle, fútbol y baloncesto.}
+
+
+%\closesection{}                   % needed to renewcommands
+\renewcommand{\listitemsymbol}{-} % change the symbol for lists
+
+% section{Extra 1}
+% \cvlistitem{Item 1}
+% \cvlistitem{Item 2}
+% \cvlistitem[+]{Item 3}            % optional other symbol
+
+% section{Extra 2}
+% \cvlistdoubleitem[\Neutral]{Item 1}{Item 4}
+% \cvlistdoubleitem[\Neutral]{Item 2}{Item 5}
+% \cvlistdoubleitem[\Neutral]{Item 3}{}
+
+% Publications from a BibTeX file
+% \nocite{*}
+% \bibliographystyle{plain}
+% \bibliography{publications}       % 'publications' is the name of a BibTeX file
+
+\end{document}
+
+
+%% end of file `template_en.tex'.
