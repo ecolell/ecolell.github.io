@@ -1,0 +1,81 @@
+\documentclass[b5paper,10pt]{book}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage{amsmath}
+\usepackage{pslatex}
+\usepackage[dvips]{graphicx}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{makeidx}
+%\usepackage[Sonny]{fncychap}
+
+
+%\usepackage{graphicx,psfrag,floatflt,hyperref}
+%\usepackage[footnote]{acronym}
+
+\usepackage[cam,width=8.27in,height=11.69in,center,dvips,vorigin=-1in]{crop}
+%------------------------------------------------------------------------------%
+%PAGE MARGIN SETUP
+%------------------------------------------------------------------------------%
+\topmargin -0.5in
+\headheight 14pt
+\textheight 7.7in
+\textwidth 6in
+\oddsidemargin -0.5in
+\evensidemargin -0.5in
+\headsep 25pt
+\parskip 10pt
+
+\makeindex
+
+
+\begin{document}
+
+\begin{titlepage}
+\title{\centering \fontsize{28}{28} \selectfont Conceptos Básicos\\ de Geoestadística}
+%\thanks{Profesor a cargo Daniel Villa, ayudante de la Evangelina Giuriati.}
+\author{\includegraphics[scale=0.28]{image/logo.eps}\vspace*{1in}\\Eloy Colell \hfill Juan Uribe \hfill Pablo Chale}
+\date{}
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+
+\begin{titlepage}
+\begin{figure}[b]
+{\centering \fontsize{18}{18} \selectfont Conceptos Básicos de Geoestadística}
+\\
+
+Editado por
+
+Lucas Capalbo Lavezzo.
+\end{figure}
+\end{titlepage}
+
+\input{Geoestadistica-book-license}
+
+\tableofcontents{}
+
+
+
+
+
+\listoffigures
+
+
+
+
+
+\input{Geoestadistica-book-estadistica}
+\input{Geoestadistica-book-series_temporales}
+\input{Geoestadistica-book-geoestadistica}
+
+
+
+
+
+\addcontentsline{toc}{part}{Referencias Bibliográficas}
+\bibliographystyle{alpha}
+\bibliography{Geoestadistica-book}
+
+
+\end{document}

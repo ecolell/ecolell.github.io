@@ -1,0 +1,519 @@
+\part{Series Temporales}
+\paragraph{
+Hasta ahora las muestras se han analizado con el objetivo de ser comparadas contra una población en un momento determinado, sin tener en cuenta la evolución de la variable en el tiempo.
+}
+\paragraph{
+Si se tuviese en cuenta la evolución de la variable, mediante una sucesión de muestras ordenadas en el tiempo, al conjunto de datos resultante se lo denomina Serie Temporal, Histórica, Cronológica o de Tiempo\cite{SANSERIES}.
+}
+\paragraph{
+Luego, el análisis de una serie temporal implica el manejo conjunto de dos variables, la variable en estudio y la variable temporal, que determina cuando se han realizado las observaciones.
+}
+\paragraph{
+Las observaciones de la variable en estudio pueden estar referidas a un:
+}
+\begin{description}
+\item[Instante de tiempo:] Se denominan \emph{magnitudes stock} o \emph{niveles}. Por ejemplo, cantidad de empleados de una empresa \emph{al final de cada mes}.
+\item[Intervalo de tiempo:] Se denominan \emph{flujos}. Por ejemplo, ventas de una empresa \emph{a lo largo de cada mes}.
+\end{description}
+\paragraph{
+La diferencia entre una y otra es que la primera no es sumable, pues se incurriría en duplicaciones, mientras que la segunda es acumulable. Las ventas de un mes se pueden sumar con la del anterior y así se podrían obtener las ventas de los 2 últimos meses. Mientras que la observación de los empleados de un mes, no se puede sumar a los empleados del mes anterior, porque se podrían estar sumando dos veces los mismos empleados. 
+}
+\paragraph{
+Esto último destaca la importancia de la \emph{Homogeneidad}, ya que si la amplitud temporal variase sería difícil hacer comparaciones entre las diferentes observaciones de una Serie Temporal. Por otra parte esta homogeneidad se pierde de forma natural, con el transcurso del tiempo, de manera que cuando las series son muy largas no hay garantía de que los datos iniciales y finales sean comparables.
+}
+\paragraph{
+Pero la necesidad de que las series temporales no sean muy largas, para que sus datos no pierdan la homogeneidad, entra en contradicción con el objetivo más elemental de la Estadística que es el de detectar regularidades en los fenómenos de masas.
+}
+\paragraph{
+Lo que se pretende con una serie temporal es describir y predecir el comportamiento de un fenómeno que cambia en el tiempo. Esas variaciones que experimenta una serie temporal pueden ser:
+}
+\begin{description}
+\item[Evolutivas:] El valor medio de la serie cambia, no permanece fijo en el tiempo.
+\item[Estacionales:] El valor medio de la serie y su variabilidad no cambian, aunque sufra oscilaciones en torno a ese valor medio fijo o constante.
+\end{description}
+\paragraph{
+Esta clasificación permite hablar de Series Temporales Evolutivas o Series Temporales Estacionales, de acuerdo al resultado del análisis realizado.
+}
+\paragraph{
+Por otra parte, existen dos tipos de enfoques para analizar una Serie Temporal: el \emph{Enfoque Clásico} y el \emph{Enfoque Causal}.
+}
+
+
+
+
+\chapter{Enfoque clásico}
+\paragraph{
+Una forma de comenzar el análisis de una serie temporal, es mediante su representación gráfica. Para ello se hará uso de un sistema cartesiano en el que los períodos de tiempo se ubican en el eje de las abscisas y los valores de la variable aleatoria ($y_t$) se llevan al eje de ordenadas. El resultado es un diagrama de dispersión, con la particularidad de que el eje de abscisas se reserva siempre a la misma variable: \emph{el tiempo}.
+}
+\paragraph{
+En este tipo de representación se pueden detectar las características mas sobresalientes de una serie temporal, tales como el \emph{movimiento a largo plazo} de la variable aleatoria, la \emph{amplitud de las oscilaciones}, la posible \emph{existencia de ciclos}, la presencia de \emph{valores atípicos o anómalos}, etc. Ver el ejemplo de la Figura ~\ref{fig:EjemploSerieTemporal}.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00006.eps}
+\caption[Serie Temporal]{Ejemplo de una serie temporal.}
+\label{fig:EjemploSerieTemporal}
+\end{figure}
+\paragraph{
+El \emph{enfoque clásico} asume que el comportamiento de la serie temporal se puede explicar en función del tiempo: $y_t=f(t)$. Bajo este esquema, la serie sería una variable dependiente y el tiempo una independiente o explicativa. Sin embargo, es necesario dejar bien claro que el tiempo, en si, no es una variable explicativa, es simplemente el ``soporte'' o escenario en el que se realiza o tiene lugar la serie temporal.
+}	
+\paragraph{
+Desde este enfoque, cualquier serie temporal se supone que es el resultado de cuatro componentes: \emph{tendencia (T)}, \emph{variaciones estacionales (E)}, \emph{variaciones cíclicas (C)} y \emph{variaciones residuales o accidentales (R)}. Pero esta descomposición de la serie no deja de ser un procedimiento diseñado para que el estudio de la misma resulte más fácil, pues esas componentes no siempre existen.
+}
+
+
+
+\section{Tendencia}
+\paragraph{
+La \emph{tendencia} se define como aquella componente que recoge el comportamiento de la serie a largo plazo, prescindiendo de las variaciones a corto y mediano plazo. Para poder detectarla es necesario que la serie conste de un número de observaciones elevado, a lo largo de muchos años, para que se pueda determinar si la serie muestra un movimiento a largo plazo que responda a una determinada ley de crecimiento, decrecimiento (series evolutivas) o estabilidad (series estacionarias). Ese comportamiento tendencial puede responder a distintos perfiles: \emph{lineal}, \emph{exponencial}, \emph{parabólico}, \emph{logístico}, etc.
+}
+\paragraph{
+Ver en el ejemplo de la Figura ~\ref{fig:IdentificacionDeLaTendencia} como cambia la forma de percibir la tendencia si es que se toma el intervalo de tiempo inadecuado.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00007.eps}
+\caption[Tendencia]{Identificación de la tendencia.}
+\label{fig:IdentificacionDeLaTendencia}
+\end{figure}
+\paragraph{
+Si se intenta establecer la tendencia teniendo en cuenta solo el intervalo comprendido entre $A$ y $B$, la \emph{tendencia} pareciera descender, aunque como se ve claramente en la gráfica, cuando se toma un rango mayor (por ejemplo desde $A$ hasta $C$) la \emph{tendencia} asciende.
+}
+\paragraph{
+El problema es que el concepto de largo plazo va íntimamente relacionado a la naturaleza de la variable, por lo que la longitud utilizada para determinar una tendencia no es comparable entre variables.
+}
+\paragraph{
+Los métodos más habituales en la determinación de la tendencia son: el \emph{análisis gráfico}, las \emph{medias móviles}, los \emph{métodos analíticos} y los de \emph{alisado exponencial}.
+}
+
+
+\subsection{Análisis gráfico}
+\label{sec:AnalisisGraficoDeLaTendenciaEnSeriesTemporales}
+\paragraph{
+Es el procedimiento mas simple, ya que no utiliza ningún procedimiento analítico que garantice la objetividad del resultado, y deja la posibilidad que dos analistas distintos lleguen a distintos resultados.
+}
+\paragraph{
+Todo depende del conocimiento que tenga el investigador de la serie temporal estudiada. Ya que en una primera instancia se realiza la representación gráfica, para luego trazar la \emph{tendencia} a mano alzada.
+}
+\paragraph{
+Aunque no es aconsejable confiar en los resultados que pueda arrojar este tipo de \emph{análisis de tendencia}, suele utilizarse como un paso previo para cualquier tipo de análisis a realizarse en una serie.
+}
+
+
+\subsection{Medias móviles}
+\paragraph{
+Consiste en promediar los valores de la variable aleatoria para períodos de tiempo fijos a lo largo de todo el horizonte de la serie temporal.
+}
+\paragraph*{
+El resultado de este proceso mecánico es la eliminación de los movimientos a corto y mediano plazo, así como las irregularidades debidas a factores no controlables ni predecibles. Es decir, a la serie se le quitan dos de sus componentes, quedando con la \emph{tendencia} y la \emph{ciclicidad}\footnotemark[1].
+}
+\footnotetext[1]{En el caso de existir la ciclicidad, ver la sección ~\ref{sec:VariacionCiclica} (página ~\pageref{sec:VariacionCiclica}).}
+\paragraph{
+La idea que subyace detrás de este método es que la media de cualquier conjunto de valores sirve para eliminar la dispersión o variabilidad de la serie motivada por factores coyunturales o esporádicos.
+}
+\paragraph{
+Estos promedios serán las medias aritméticas de un conjunto $k$ de valores consecutivos, con el requisito de que $k$ sea inferior al total de observaciones. El procedimiento específico varía si $k$ es par o impar.
+}
+\paragraph{
+Si $k$ es entero impar, entonces las sucesivas medias se obtendrían de la siguiente forma:
+}
+\begin{equation}
+y_t^* = \displaystyle\frac{\displaystyle\sum_{i=-\frac{k-1}{2}}^{\frac{k-1}{2}}y_{t+i}}{k}
+\end{equation}
+\begin{equation}
+y_t^* = \frac{
+y_{t-\frac{k-1}{2}}   +
+y_{t-\frac{k-1}{2}+1} +
+y_{t-\frac{k-1}{2}+2} +
+... +
+y_t  +
+... +
+y_{t+\frac{k-2}{2}-1} +
+y_{t+\frac{k-1}{2}-1} +
+y_{t+\frac{k-1}{2}}
+}{k}
+\end{equation}
+\paragraph{
+A la media $y_t^*$ se la denomina centrada y se la hace corresponder con la observación del momento $t$, que es el valor central de la suma.
+}
+\paragraph{
+Si $k$ es entero par, no se podría determinar el valor central de $k$, por lo que no se correspondería con ninguno de los observados en la serie original. Esto se supera al aplicar nuevamente el método de medias móviles con $k=2$, quedando ahora si los valores centrales relacionados con los valores observados originalmente.
+}
+\paragraph{
+La fórmula que se utiliza para ambos casos, cuando $k$ es un entero par, es la siguiente:
+}
+\begin{equation}
+y_{t-0,5}^* = \displaystyle\frac{\displaystyle\sum_{i=-\frac{k}{2}}^{\frac{k}{2}-1} y_{t+i}}{k}
+\end{equation}
+\paragraph{
+Luego, sea $k$ entero par o impar, es importante determinar el tamaño óptimo que \emph{suavice} la serie temporal y que deje expuesta la \emph{tendencia}. Si $k$ es muy grande entonces el proceso de suavizado puede llegar a ser tan fuerte que se pierda más información de la deseada. Por otro lado, si $k$ es muy pequeño no se conseguirán eliminar todas las perturbaciones ajenas a la tendencia.
+}
+\paragraph{
+Si la serie demuestra estacionalidad, o algún tipo de ciclicidad, el valor de $k$ debería ser mayor o igual al intervalo de tiempo necesario para que se produzca un ciclo. En caso de ser estacionalidad, $k$ debería ser mayor o igual al año. Para cualquier otro caso, en donde exista incertidumbre se recomienda que $k$ sea igual a $3$ o $5$.
+}
+\paragraph*{
+En el ejemplo de la Figura ~\ref{fig:TendenciaMediasMoviles}, se muestra una serie temporal y su tendencia calculada por \emph{medias móviles}. Además se muestra la serie original sin la tendencia calculada (filtrada por el método aditivo\footnotemark[2]).
+}
+\footnotetext[2]{La unión de los componentes de una serie se realiza a partir de dos métodos, en el aditivo $y_t = T_t + C_t + E_t + R_t$, mientras que en el multiplicativo $y_t = T_t * C_t * E_t * R_t$.}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00008.eps}
+\caption[Medias Móviles]{Obtención de la tendencia por Medias Móviles.}
+\label{fig:TendenciaMediasMoviles}
+\end{figure}
+\paragraph{
+Al igual que en el \emph{análisis gráfico} se introduce subjetividad en la selección del valor de $k$. Además, no se puede alcanzar el objetivo de la predicción en el análisis de las series temporales, pues la tendencia obtenida mediante \emph{medias móviles} no permite la proyección hacia el futuro.
+}
+
+
+\subsection{Método analítico}
+\paragraph{
+Selecciona una función matemática que modelice de forma adecuada la tendencia de la serie temporal. El procedimiento de ajuste suele ser el de los \emph{mínimos cuadrados}, aunque para comenzar el análisis se recurre a la \emph{representación gráfica} que informa de manera aproximada el tipo de función. Otra alternativa es hacer uso del conocimiento previo de la naturaleza de una serie temporal.
+}
+\paragraph{
+La utilización de este método con respecto a los anteriores tiene dos ventajas:
+}
+\begin{itemize}
+\item Se mide la \emph{bondad del ajuste}, dejando de lado la subjetividad del analista.
+\item Se determina una \emph{función explícita}, que permite realizar \emph{predicciones}.
+\end{itemize}
+\paragraph{
+A continuación se detalla: el modelo \emph{lineal}, el \emph{polinomial} y el \emph{exponencial}.
+}
+
+\subsubsection{Lineal}
+\paragraph{
+Modelo en el que la variable aleatoria se hace depender linealmente del tiempo, y en donde se presentan variaciones constantes para periodos sucesivos de tiempo. La forma general del mismo es:
+}
+\begin{equation}
+y_t = y_t^* + R_t = a + bt + R_t
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$t$] Tiempo cronológico.
+\item[$b$] Variación media entre periodos.
+\item[$y_t$] Serie temporal original.
+\item[$y_t^*$] Estimación de la Tendencia.
+\item[$R_t$] Resto de las componentes no identificadas, representadas como un residuo.
+\end{description}
+\paragraph{
+Ver el ejemplo de la Figura ~\ref{fig:TendenciaMetodoAnaliticoLineal}.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00009.eps}
+\caption[Método Analítico Lineal]{Obtención de la tendencia por el Método Analítico Lineal.}
+\label{fig:TendenciaMetodoAnaliticoLineal}
+\end{figure}
+
+\subsubsection{Polinomial}
+\paragraph{
+Modelo en el que la relación de la variable aleatoria con el tiempo se expresa a partir de un polinomio. Las variaciones no son constantes, ni en términos absolutos ni relativos.
+}
+\paragraph{
+El grado del polinomio va a decidir la familia de funciones que se utilice en el modelo, aunque el mas común de todos es el modelo de función parabólica. La forma general del mismo es:
+}
+\begin{equation}
+y_t = y_t^* + R_t = a + bt + ct^2 + R_t
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$t$] Tiempo cronológico.
+\item[$y_t$] Serie temporal original.
+\item[$y_t^*$] Estimación de la Tendencia.
+\item[$R_t$] Resto de las componentes no identificadas, representadas como un residuo.
+\end{description}
+\paragraph{
+Ver el ejemplo de la Figura ~\ref{fig:TendenciaMetodoAnaliticoPolinomial}.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00010.eps}
+\caption[Método Analítico Polinomial]{Obtención de la tendencia por el Método Analítico Polinomial.}
+\label{fig:TendenciaMetodoAnaliticoPolinomial}
+\end{figure}
+
+\subsubsection{Exponencial}
+\paragraph{
+Modelo en el que la relación de la variable aleatoria con el tiempo se expresa a partir de una función exponencial, por lo que la serie temporal cambia a razón de una tasa constante. El ajuste por mínimos cuadrados es fácilmente realizable, debido a que la función es linealizable. La forma general del modelo es:
+}
+\begin{equation}
+y_t = y_t^* + R_t = a e^{bt} + R_t
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$t$] Tiempo cronológico.
+\item[$y_t$] Serie temporal original.
+\item[$y_t^*$] Estimación de la Tendencia.
+\item[$a$] Tasa de variación inicial.
+\item[$b$] Tasa de variación instantánea.
+\item[$R_t$] Resto de las componentes no identificadas, representadas como un residuo.
+\end{description}
+\paragraph{
+Ver el ejemplo de la Figura ~\ref{fig:TendenciaMetodoAnaliticoExponencial}.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00011.eps}
+\caption[Método Analítico Exponencial]{Obtención de la tendencia por el Método Analítico Exponencial}
+\label{fig:TendenciaMetodoAnaliticoExponencial}
+\end{figure}
+
+
+\subsection{Alisado exponencial}
+\paragraph{
+Los métodos para calcular la tendencia explicados hasta aquí, ya sea el de \emph{medias móviles} o alguno de los \emph{métodos analíticos}, se agrupan dentro del conjunto de técnicas para el \emph{alisado proporcional}.
+}
+\paragraph{
+El \emph{alisado exponencial} consiste, al igual que los métodos anteriores, en medias ponderadas; pero con la particularidad que la ponderación decrece conforme nos alejamos del origen. Esto es útil para la predicción de series \emph{no estacionales} y con una tendencia no definida.
+}
+\paragraph{
+Para el instante $t$, el valor medio de la serie ($y_t^*$) se puede obtener de la siguiente forma:
+}
+\begin{equation}
+y_t^* = \alpha y_t + (1-\alpha) y_{t-1}^*
+\end{equation}
+\begin{equation}
+y_t^* = \alpha y_t + (1-\alpha) [\alpha y_{t-1} + (1-\alpha) y_{t-2}^*]
+\end{equation}
+\begin{equation}
+y_t^* = \alpha y_t + \alpha(1-\alpha) y_{t-1} + (1-\alpha)^2 y_{t-2}^*
+\end{equation}
+\begin{equation}
+y_t^* = \alpha y_t + \alpha(1-\alpha) y_{t-1} + (1-\alpha)^2 [\alpha y_{t-2} + (1-\alpha) y_{t-3}^*]
+\end{equation}
+\begin{equation}
+y_t^* = \alpha y_t + \alpha(1-\alpha) y_{t-1} + \alpha(1-\alpha)^2 y_{t-2} + (1-\alpha)^3 y_{t-3}^*
+\end{equation}
+\begin{equation}
+y_t^* = \alpha y_t + \alpha(1-\alpha) y_{t-1} +...+\alpha(1-\alpha)^{t-1} y_1 + (1-\alpha)^t y_0^*
+\end{equation}
+\begin{equation}
+y_t^* = y_{t-1}^* + \alpha(y_{t} + y_{t-1}^*) \textit{ tal que } (0 < \alpha < 1)
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$t$] Instante de tiempo.
+\item[$y_t$] Valor de la serie temporal en $t$.
+\item[$y_t^*$] Estimación de la Tendencia para $t$.
+\item[$y_0^*$] La estimación de la tendencia en el origen es igual al valor de la serie temporal en ese punto ($y_0$).
+\item[$\alpha$] Constante de suavizado.
+\end{description}
+\paragraph{
+Cuanto mas \emph{estable} es la serie, $\alpha$ se acerca a la unidad; mientras que si la serie presenta gran \emph{volatilidad}, $\alpha$ tiende a cero. En cualquier caso, implica introducir cierta \emph{subjetividad} en el análisis de la serie, lo que no deja de ser un inconveniente.
+}
+\paragraph{
+En el ejemplo de la Figura ~\ref{fig:TendenciaAlisadoExponencial} (a) se muestra una serie temporal y 2 tendencias calculadas por \emph{alisado exponencial}. Luego se muestra la serie original sin la tendencia calculada (a partir del método aditivo), por cada una de las tendencias calculadas.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00012.eps}
+\caption[Alisado Exponencial]{Obtención de la tendencia por Alisado Exponencial}
+\label{fig:TendenciaAlisadoExponencial}
+\end{figure}
+\paragraph{
+Por último, cuando la serie temporal tiene una tendencia definida y es estacional, el método que se acaba de exponer se sustituye por otros procedimientos como el de \emph{Holt-Winters} \cite{HOLTWINTERS,HOLTWINTERS01}.
+}
+
+
+
+\section{Variación Estacional}
+\paragraph{
+La \emph{variación estacional} se define por aquella componente de la serie que contiene movimientos que se repiten de forma periódica, siendo la periodicidad inferior al \emph{año}, el \emph{mes}, la \emph{semana} o el \emph{día}.
+}
+\paragraph{
+La razón de estas variaciones se basa en causas de tipo climatológico (producción, turismo, etc.) o de ordenación del tiempo (los días de la semana condicionan el comportamiento de ciertas series temporales).
+}
+\paragraph{
+Estos movimientos que se repiten de forma sistemática, dificultan la posibilidad de hacer comparaciones entre los valores sucesivos de una misma serie temporal, pues el nivel medio de la misma se ve alterado por la estacionalidad.
+}
+\paragraph{
+Para evitar esas distorsiones en los valores medios se recurre a lo que se conoce como \emph{desestacionalización} de la serie o corrección estacional. Para realizar esta operación es necesario aislar en primer lugar la componente estacional, lo que posibilita su posterior eliminación.
+}
+\paragraph*{
+Los distintos métodos de obtención de la componente estacional, asumen como \emph{precondición} la eliminación\footnotemark[3] de la \emph{tendencia (T)}. Ver el ejemplo de la Figura ~\ref{fig:TendenciaMetodoAnaliticoPolinomial} (página ~\pageref{fig:TendenciaMetodoAnaliticoPolinomial}).
+}
+\footnotetext[3] {Se deberá tener en cuenta si el método de composición es aditivo o multiplicativo.}
+\paragraph{
+A partir de la \emph{serie temporal sin tendencia}, se determina el lapso de tiempo mínimo en el cual el comportamiento parece repetirse.
+}
+\paragraph{
+Con el \emph{lapso de tiempo mínimo}, se divide la \emph{serie temporal sin tendencia} en series temporales del tamaño del lapso mencionado. Por ejemplo, para una serie temporal sin tendencia de 48 meses, si el lapso mínimo son 12 meses, entonces se tendrán 4 series temporales; tal que su comportamiento parece repetirse para cada una de las series resultantes.
+}
+\paragraph{
+Se definen como \emph{índices generales de variación estacional (IGVE)} al promedio de las series temporales obtenidas. La fórmula es:
+}
+\begin{equation}
+IGVE(e) = \frac{\displaystyle\sum_{i \in e; e \in l} x_i}{n_e}
+\end{equation}
+\paragraph{
+Siendo:
+}
+\begin{description}
+\item[$e$] Estación dentro de $l$.
+\item[$l$] \emph{Lapso de tiempo mínimo} en que se repite el ciclo.
+\item[$n_l$] Cantidad de elementos pertenecientes al conjunto $e$.
+\end{description}
+\paragraph{
+Si la estacionalidad es anual (12 meses de \emph{lapso mínimo}), el resultado del promedio será una serie temporal de 12 meses de longitud, mientras que para la Figura ~\ref{fig:TendenciaMetodoAnaliticoPolinomial} (c) los resultados se muestran en la Figura ~\ref{fig:DesestacionalizacionIGVE}.
+}
+\begin{figure}[hb]
+\centering
+\includegraphics[scale=0.66]{graph/g00014.eps}
+\caption[IGVE]{Ejemplo de IGVE de la Figura ~\ref{fig:TendenciaMetodoAnaliticoPolinomial} (c).}
+\label{fig:DesestacionalizacionIGVE}
+\end{figure}
+\paragraph*{
+Luego, como se detalla en la Figura ~\ref{fig:Desestacionalizacion}, la eliminación de la \emph{variación estacional\footnotemark[4] calculada} se realiza de forma semejante a lo hecho con la \emph{tendencia}.
+}
+\footnotetext[4]{Repetición sucesivas de IGVE hasta cubrir la longitud de la \emph{serie temporal sin tendencia}.}
+\begin{figure}[hb]
+\centering
+\includegraphics[scale=0.66]{graph/g00013.eps}
+\caption[Desestacionalización]{Ejemplo de una Desestacionalización de la Figura ~\ref{fig:TendenciaMetodoAnaliticoPolinomial} (c)}
+\label{fig:Desestacionalizacion}
+\end{figure}
+\paragraph{
+La serie temporal resultante en la Figura ~\ref{fig:Desestacionalizacion}, se encuentra determinada por:
+}
+\begin{equation}
+y_t^* = y_t - (C_t + R_t); T_t \not \in y_t
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$y_t$] Serie temporal original sin tendencia.
+\item[$y_t^*$] Estimación de la Estacionalidad.
+\item[$C_t$] Estimación de la Ciclicidad.
+\item[$R_t$] Estimación de la Residualidad.
+\end{description}
+\paragraph{
+Una vez eliminada la estacionalidad, la serie temporal queda homogeneizada y los valores sucesivos podrán ser comparados en lo que a niveles medios se refiere.
+}
+\paragraph*{
+Por último, es importante destacar que si se elimina la \emph{tendencia} y la \emph{ciclicidad} por \emph{medias móviles}, solo queda por aislar la \emph{estacionalidad} del \emph{resto}. En esta idea se basan los \emph{métodos de desestacionalización}\footnotemark[5] ampliamente utilizados como el \emph{X-9} y su posterior desarrollo el \emph{X-11}\cite{SEASONALX11}.
+}
+\footnotetext[5]{Desarrollados por el \emph{Boreau of the Census de Estados Unidos}.}
+
+
+
+\section{Variación Cíclica}
+\label{sec:VariacionCiclica}
+\paragraph{
+La \emph{variación cíclica} se define por aquella componente de la serie que contiene movimientos a mediano plazo, periodos superiores al año, que se repiten de forma casi periódica, aunque no son tan regulares como las \emph{variaciones estacionales}.
+}
+\paragraph*{
+Esta componente resulta difícil de aislar, por tres posibles razones: el \emph{periodo de la serie es pequeño}, \emph{los ciclos de la serie se superponen} o simplemente \emph{no existe la componente}. Esto, con frecuencia, conduce a un análisis de las series temporales en el que se prescinde del estudio separado de los \emph{ciclos} y, en su lugar, se trabaja con la componente mixta \emph{ciclo-tendencia}.
+}
+\paragraph{
+Por otra parte, se puede intentar aislar la componente mediante un proceso semejante al de las \emph{medias móviles} sobre una \emph{serie temporal sin tendencia ni estacionalidad}. En la Figura ~\ref{fig:CiclicidadPorMediasMoviles} se continua con el ejemplo de la Figura ~\ref{fig:Desestacionalizacion} (página ~\pageref{fig:Desestacionalizacion}).
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00015.eps}
+\caption[Ciclicidad por Medias Móviles]{Obtención de la variación cíclica por Medias Móviles}
+\label{fig:CiclicidadPorMediasMoviles}
+\end{figure}
+
+
+
+\section{Variación Residual (o Indeterminada)}
+\paragraph{
+La \emph{variación residual} se define por aquella componente de la serie que no responde a ningún patrón de comportamiento, sino que es el resultado de factores fortuitos o aleatorios que inciden de forma aislada (inundaciones, huelgas, etc.). Ver la Figura ~\ref{fig:CiclicidadPorMediasMoviles} (c).
+}
+\paragraph{
+La utilidad de esta componente se basa en poder verificar si satisface ciertos supuestos o hipótesis; por ejemplo, que sea realmente aleatoria.
+}
+
+
+
+
+\chapter{Enfoque Causal}
+\paragraph{
+Otra forma de estudiar el comportamiento de una \emph{serie temporal} es tratar de explicar sus variaciones como consecuencia de las variaciones de otra u otras series temporales temporales. Esto impulsa la búsqueda de una función que ligue esas variables para después poder cuantificarlas mediante el análisis de regresión.
+}
+\paragraph{
+La \emph{cuantificación de la variación} que experimenta la serie al pasar de un periodo de tiempo a otro, se obtiene mediante:
+}
+\begin{equation}
+\Delta y_t = y_t - y_{t-1}
+\end{equation}
+\paragraph*{
+Esta relación determina si la serie está \emph{creciendo} o \emph{decreciendo}, dependiendo si el $\Delta y_t$ es positivo o negativo, respectivamente.
+}
+\paragraph{
+Por otra parte, la escala de medición se encuentra expresada en la misma unidad que la serie temporal, impidiendo \emph{comparaciones} con otras series temporales de distinta escala.
+}
+\paragraph{
+Al conjunto de todas las variaciones se lo considera a su vez una \emph{serie temporal}. Si se obtienen estas variaciones para datos anuales y \emph{tendencia lineal}, se habla de una serie filtrada de tendencia (quedando solo las componentes cíclica y residual). Mientras que para datos con periodicidad inferior al año, si la diferencia se realiza con respecto al mismo mes del año pasado, se obtiene una serie filtrada en estacionalidad y tendencia. Ver los ejemplos de las Figuras ~\ref{fig:EnfoqueCausalAnual} y ~\ref{fig:EnfoqueCausalMensual}.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00016.eps}
+\caption[Serie temporal de diferenciales anuales]{Serie temporal de diferenciales de valores anuales.}
+\label{fig:EnfoqueCausalAnual}
+\end{figure}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00017.eps}
+\caption[Serie temporal de diferenciales mensuales]{Serie temporal de diferenciales de valores mensuales.}
+\label{fig:EnfoqueCausalMensual}
+\end{figure}
+\paragraph*{
+Para lograr que las series temporales de diferenciales sean homogéneas (o comparables), es necesario cuantificar las variaciones en términos \emph{relativos}\footnotemark[6], mediante las \emph{tasas de variación}.
+}
+\footnotetext[6]{Medir las variaciones en forma adimensional.}
+
+
+
+\section{Tasas de variación}
+\paragraph{
+Las \emph{tasas de variación} surgen al comparar la variación intertemporal de la variable aleatoria, y se obtienen mediante:
+}
+\begin{equation}
+T(h,n) = T_h^n = \frac{\displaystyle\sum_{i=0}^{n-1}y_{t-i}}{\displaystyle\sum_{j=0}^{n-1}y_{t-h-j}}-1
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$h$] Número de periodos que hay entre las observaciones comparadas\footnotemark[7].
+\item[$n$] Número de pares de observaciones (comparaciones) utilizadas para el cálculo.
+\end{description}
+\footnotetext[7]{Cantidad de datos tomados hacia atrás.}
+\paragraph{
+Luego, si $n=1$:
+}
+\begin{equation}
+T(h,1) = T_h^1 = \frac{y_t}{y_{t-h}} -1 = \displaystyle\frac{y_t - y_{t-h}}{y_{t-h}} = \displaystyle\frac{\Delta y_t}{y_{t-h}}
+\end{equation}
+\paragraph{
+Las \emph{tasas} se pueden expresar en tantos por uno, aunque lo mas habitual es que se multipliquen por cien, o cualquier otra potencia de diez, cuyo caso se hablaría de porcentajes o lo que corresponda.
+}
+\paragraph{
+Por último, en función de $h$ y $n$, las tasas más habituales que suelen calcularse son:
+}
+\begin{description}
+\item[$T_1^1 = \big(\displaystyle\frac{y_t}{y_{t-1}}-1\big)*100$]
+\ \\Se utiliza para datos anuales. Una periodicidad inferior al año, podría conducir a que la serie resultante se encuentre distorsionada por la estacionalidad.
+\item[$T_{12}^1 = \big(\displaystyle\frac{y_t}{y_{t-12}}-1\big)*100 $]
+\ \\Se utiliza para datos mensuales, y una tasa de variación anual. La estacionalidad no lo afecta.
+\item[$T_6^1 = \big(\displaystyle\frac{y_t}{y_{t-6}}-1\big)*100 $]
+\ \\Se utiliza para datos mensuales, y una tasa de variación semestral. La estacionalidad lo afecta, debido a que no es homogénea (enero-julio, febrero-agosto, etc.).
+\item[$T_{12}^{12} = \big(\displaystyle\frac{y_t+y_{t-1}+...+y_{t-11}}{y_{t-12}+y_{t-13}+...+y_{t-23}}-1\big)*100 $]
+\ \\Se utiliza para datos mensuales, y se obtiene una tasa de variación anual. Solo se puede aplicar a las variables que se miden por \emph{intervalos de tiempo}\footnotemark[8].
+\item[$T_1^{12} = \big(\displaystyle\frac{y_t+y_{t-1}+...+y_{t-11}}{y_{t-1}+y_{t-2}+...+y_{t-12}}-1\big)*100 $]
+\ \\Se utiliza para datos mensuales, y se obtiene una tasa de variación mensual basada en medias móviles anuales.
+\item[$T_1^{3} = \big(\displaystyle\frac{y_t+y_{t-1}+y_{t-2}}{y_{t-1}+y_{t-2}+y_{t-3}}-1\big)*100 $]
+\ \\Se utiliza para datos mensuales, y se obtienen tasas mensuales basada en medias móviles trimestrales.
+\end{description}
+\footnotetext[8]{Variables que representan un flujo de datos.}

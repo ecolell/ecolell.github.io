@@ -1,0 +1,1063 @@
+\part{Estadística}
+\subparagraph{
+Es la rama de la matemática que se ocupa del estudio, análisis y clasificación de datos aleatorios. Se pueden clasificar dos tipos de estadísticas: la descriptiva\cite{BERE,WILLY,CAPE,NACHO04} y la inferencial.
+}
+
+
+
+
+\chapter{Estadística Descriptiva}
+\subparagraph{
+Se encarga de la organización, presentación y síntesis de datos. Para esto es necesario clasificar cada uno de los datos $x_{i}$ (valores de la variable $X$ medida) en clases o intervalos de clases $C_{j}$, donde $j$ representa la $j-esima$ clase o intervalo de clase. Esa disposición de datos clasificados en forma tabular permite construir la distribución de frecuencias ($f$), la cual puede ser mostrada de forma:
+}
+\begin{description}
+\item[Absoluta]
+Cantidad de elementos $x_{i}$ pertenecientes a una clase o intervalo de clase $C_{j}$. Se llama frecuencia absoluta, o simplemente frecuencia y se representa mediante la función $f_{j}$.
+\item[Relativa]
+Porción de los elementos totales que pertenecen a una clase o intervalo de clase. Se calcula a partir de la formula $f_{Rj} = \frac{f_{j}}{n}$, siendo $n$ la cantidad de elementos de la muestra y cumplirá con la ecuación $\sum f_{Rj}=1$.
+\item[Acumulada]
+Número de veces que ha aparecido en la muestra un elemento ($x_{i}$) de una clase o intervalo de clase menor o igual. Implica cierto orden entre las clases, y se representa mediante la función $f_{Aj}=\displaystyle\sum_{t=1}^j f_{t}$ para las absolutas y $f_{ARj}=\displaystyle\sum_{t=1}^j f_{Rt}$ para las relativas.
+\end{description}
+
+
+
+\section{Propiedades de los Datos}
+\subparagraph{
+En el análisis o interpretación de datos numéricos, se pueden utilizar medidas descriptivas que representan las propiedades de posición, centralización, dispersión y forma, para resumir las características sobresalientes del conjunto de datos. Si estas medidas se calculan con una muestra de datos se denominan estadísticos, mientras que si se calculan con la población de datos, se denominan parámetros.
+}
+
+
+\subsection{Posición}
+\subparagraph{
+Las propiedades de posición están representadas por los Percentiles, Quartiles y Deciles, detallados a continuación.
+}
+
+\subsubsection{Percentiles}
+\subparagraph{
+Son 99 valores que dividen en cien partes iguales el conjunto de datos ordenados. Ejemplo, el percentil de orden 15  ($P_{15}(X)$) deja por debajo al 15\% de las observaciones, y por encima queda el 85\%.
+}
+
+\subsubsection{Quartiles}
+\subparagraph{
+Son los tres valores que dividen al conjunto de datos ordenados en cuatro partes iguales, son un caso particular de los percentiles:
+}
+\begin{itemize}
+\item El primer cuartil $Q_{1}(X)$, es el menor valor $x_{i}$ que es mayor que una cuarta parte de los datos.
+\item El segundo cuartil $Q_{2}(X)$, es el menor valor $x_{i}$ que es mayor que la mitad de los datos.
+\item El tercer cuartil $Q_{3}(X)$, es el menor valor $x_{i}$ que es mayor que tres cuartas partes de los datos.
+\end{itemize}
+
+\subsubsection{Deciles}
+\subparagraph{
+Son los nueve valores que dividen al conjunto de datos ordenados en diez partes iguales, son también un caso particular de los percentiles. Ejemplo, $D_{1}(X) = P_{10}(X)$.
+}
+
+
+\subsection{Centralización}
+\subparagraph{
+Las propiedades de centralización están representadas por la Media Aritmética, Mediana y Moda, detalladas a continuación.
+}
+
+\subsubsection{Mediana}
+\subparagraph{
+Aparece en el medio de una sucesión ordenada de valores.\\Si el tamaño de la muestra ($n$) es un número impar, se representa por el valor numérico de la observación ordenada (coincidiendo en este caso con el percentil 50):
+}
+\begin{equation}
+\tilde{X}=x_{(\frac{n+1}{2})}
+\end{equation}
+\subparagraph{
+Por otro lado, si el número de la muestra es par, se representa con la media de los dos valores intermedios en el arreglo ordenado:
+}
+\begin{equation}
+\tilde{X}=\frac{x_{(\frac{n}{2})} + x_{(\frac{n}{2}+1)}}{2}
+\end{equation}
+
+\subsubsection{Media Aritmética}
+\subparagraph{
+Se encuentra al sumar todos los valores en la muestra y luego, al dividir el total por $n$ (el número de observaciones en la muestra).
+}
+\begin{equation}
+\bar{X} = \frac{1}{n}\sum _{i=1}^n x_{i}
+\end{equation}
+\subparagraph{
+Además se podría calcular mediante las frecuencias absolutas, donde $k$ representa a la cantidad de clasificaciones de los datos realizadas.
+}
+\begin{equation}
+\bar{X} = \frac{1}{n}\sum _{j=1}^k \tilde{C_{j}} f_{j}
+\end{equation}
+\subparagraph{
+Siendo $\tilde{C_{j}}$ la mediana entre los valores posibles dentro de una clase o intervalo de clase.\\
+Si hay valores extremos, la Media Aritmética no es una buena medida de tendencia central. En estos casos se preferirá la Mediana.
+}
+
+\subsubsection{Moda}
+\subparagraph{
+Es el valor más típico o más observado. Es la clase con mayor frecuencia. Cuando se trabaja con tablas de frecuencias para variables continuas existirá un intervalo modal.
+}
+\begin{equation}
+\hat{X} = C_{i}; (\forall j , f_{i} \geq f_{j})
+\end{equation}
+
+
+\subsection{Dispersión}
+\subparagraph{
+Las propiedades de dispersión están representadas por el Rango, Varianza, Desvío Estándar y Coeficiente de variación, detallados a continuación.
+}
+
+\subsubsection{Rango}
+\subparagraph{
+Definido como recorrido o amplitud, es la diferencia entre el mayor y el menor valor de los $x_{i}$.
+}
+\begin{equation}
+Rango(X)=Max(X)-Min(X)
+\end{equation}
+
+\subsubsection{Varianza}
+\subparagraph{
+Es el promedio de los cuadrados de las diferencias entre cada elemento de la muestra y la media obtenida.
+}
+\begin{equation}
+S^2(X)=\frac{\displaystyle\sum_{i=1}^n (x_{i}-\bar{X})^2}{n-1}
+\end{equation}
+\subparagraph{
+Si se utiliza $n$ en el divisor se calcula un parámetro, mientras que con $n-1$ se obtiene el estadístico (ya que se tiene en cuenta la propiedad de los grados de libertad).
+}
+
+\subsubsection{Desviación Estándar}
+\subparagraph{
+La varianza está compuesta de las mismas unidades que la variable pero al cuadrado, para evitar este problema podemos usar como medida de dispersión la desviación típica que se define como la raíz cuadrada positiva de la varianza.
+}
+\begin{equation}
+S(X)=\sqrt{S^2(X)}=\sqrt{\frac{\displaystyle\sum_{i=1}^n (x_{i}-\bar{X})^2}{n-1}}
+\end{equation}
+
+\subsubsection{Coeficiente de variación}
+\subparagraph{
+Es una medida relativa propuesta por Pearson que se utiliza para comparar la dispersión de dos o más series de datos que están expresados en unidades diferentes. A menor diferencia entre los $CV$ más homogéneas son las variables.
+}
+\begin{equation}
+CV(X)=\frac{S(X)}{|\bar{X}|}
+\end{equation}
+
+
+\subsection{Forma}
+\subparagraph{
+Las propiedades de forma están representadas por el Coeficiente de Asimetría y Kurtosis, detalladas a continuación.
+}	
+
+\subsubsection{Coeficiente de asimetría}
+\subparagraph{
+Cuantifican el grado de asimetría de la distribución en torno a una medida de centralización. 
+Una distribución es asimétrica a la derecha si las frecuencias (absolutas o relativas) descienden más lentamente por la derecha que por la izquierda (valor positivo). Si las frecuencias descienden más lentamente por la izquierda que por la derecha diremos que la distribución es asimétrica a la izquierda (valor negativo). Es normal cuando la distribución es simétrica (valor nulo). Ver el ejemplo de la Figura ~\ref{fig:CoeficienteDeAsimetria}.
+}
+\subparagraph{
+Existen varias medidas de la asimetría de una distribución de frecuencias.
+}
+\begin{description}
+\item[Según Pearson:]
+\begin{equation}
+CA_{P}(X)=\frac{\bar{X}-\hat{X}}{S(X)}
+\end{equation}
+\item[Según Fisher:]
+\begin{equation}
+CA_{F}(X)=\frac{\displaystyle\sum_{i=1}^n[(x_{i}-\bar{X})^{3}f_{Ri}]}{S(X)^{3}}
+\end{equation}
+\item[Según Bowley:]
+\begin{equation}
+CA_{B}(X)=\frac{Q_{3}(X)+Q_{1}(X)-2\tilde{X}}{Q_{3}(X)-Q_{1}(X)}=1+2\frac{Q_{1}(X)-\tilde{X}}{Q_{3}(X)-Q_{1}(X)}
+\end{equation}
+\end{description}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00001.eps}
+\caption[Coeficiente de Asimetría]{Disposición gráfica de acuerdo al Coeficiente de Asimetría}
+\label{fig:CoeficienteDeAsimetria}
+\end{figure}
+
+
+\subsubsection{Coeficiente de Kurtosis}
+\subparagraph{
+Describe el grado de esbeltez de una distribución con respecto a la distribución normal. Se calcula por:
+}
+\begin{equation}
+CK(X) = \frac{\displaystyle\sum_{i=1}^n[(x_{i}-\bar{X})^4f_{Ri}]}{S(X)^4}
+\end{equation}
+\subparagraph{
+La distribución normal tiene kurtosis igual a tres, es llamada mesocúrtica. A las distribuciones más agudas, con colas relativamente anchas, se las llama leptocúrtica, tienen valores de kurtosis mayores que tres, y las distribuciones achatadas en el centro se llaman platicúrticas, tienen valores menores que tres. En ocasiones se acostumbra a definir la kurtosis como $CK(X) - 3$. Ver el ejemplo de la Figura ~\ref{fig:CoeficienteDeKurtosis}.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00002.eps}
+\caption[Coeficiente de Kurtosis]{Disposición gráfica de acuerdo al Coeficiente de Kurtosis.}
+\label{fig:CoeficienteDeKurtosis}
+\end{figure}
+
+
+
+
+\section{Estadística Bivariable}
+\subparagraph{
+Al analizar modelos complejos que dependen de dos o más variables, se comienzan a buscar metodologías que comiencen a analizar relaciones entre las diferentes distribuciones de frecuencias (representadas por variables), en un intento por resumir los resultados.\\
+Las más importantes son: la Covarianza y el Coeficiente de correlación.
+}
+
+
+\subsection{Covarianza}
+\subparagraph{
+Determina si existe una relación lineal entre dos variables. Se calcula promediando las puntuaciones diferenciales por su tamaño muestral. El resultado fluctúa entre $+\infty$ y $-\infty$, por lo que la magnitud del resultado carece de significado, y lo único importante es el signo que adopte.
+}
+\begin{equation}
+Cov(X,Y)=\frac{1}{n}\sum_{i=1}^n(x_{i}-\bar{X})(y_{i}-\bar{Y})
+\end{equation}
+\begin{description}
+\item[Si $Cov(X,Y)>0$]
+pendiente de la recta de regresión positiva. Indica que hay dependencia directa, es decir las variaciones de las variables tienen el mismo sentido.
+\item[Si $Cov(X,Y)<0$]
+pendiente de la recta de regresión negativa. Indica que hay dependencia inversa o negativa, es decir las variaciones de las variables tienen sentido opuesto.
+\item[Si $Cov(X,Y)\approx0$]
+no es posible determinar la pendiente de la recta de regresión, por lo que no existe relación lineal entre las 2 variables. Podría existir otro tipo de relación.
+\end{description}
+
+
+\subsection{Coeficiente de correlación}
+\subparagraph{
+Evalúa la relación lineal entre dos variables. Permite saber si el ajuste de la nube de puntos a la recta de regresión obtenida es satisfactorio. Ver el ejemplo de la Figura ~\ref{fig:CoeficienteDeCorrelacion}.\\
+Según Pearson:
+}
+\begin{equation}
+CC_{P}(X,Y)=\frac{Cov(X,Y)}{S(X)S(Y)}
+\end{equation}
+\subparagraph{
+El coeficiente de correlación, $CC_{P}(X,Y)$, presenta valores entre $–1$ y $+1$.
+}
+\begin{description}
+\item[Cuando $r\approx0$]
+no hay correlación lineal entre las variables. La nube de puntos está muy dispersa y no se puede trazar una recta de regresión.
+\item[Cuando $r\approx+1$]
+hay una buena correlación positiva entre las variables según un modelo lineal y la recta de regresión que se determine tendrá pendiente positiva.
+\item[Cuando $r\approx-1$]
+hay una buena correlación negativa entre las variables según un modelo lineal y la recta de regresión que se determine tendrá pendiente negativa.
+\end{description}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00005.eps}
+\caption[Coeficiente de Correlación]{Disposición gráfica de acuerdo al Coeficiente de Correlación.}
+\label{fig:CoeficienteDeCorrelacion}
+\end{figure}
+
+
+
+
+\chapter{Estadística Inferencial}
+\subparagraph{
+Trata de generalizar la información obtenida en una muestra a una población. La bondad de estas deducciones se mide en términos probabilísticos, es decir, toda inferencia se acompaña de su probabilidad de acierto.
+Por esto se utilizan las probabilidades en las estimaciones, ya que permitirán el avance sobre el Contraste de hipótesis y la Inferencia Bayesiana\cite{LECHUGA}.
+}
+
+
+
+\section{Probabilidad}
+\subparagraph{
+Mide la frecuencia con la que ocurre un suceso en un experimento bajo condiciones suficientemente estables\cite{WIKIPROBABILIDAD}. La notación utilizada es:
+}
+\begin{equation}
+P(A)=\lim_{n_{c}\to\infty}\frac{n_{A}}{n_{c}}
+\end{equation}
+\subparagraph{
+Donde $A$ es el suceso estudiado, $n_{A}$ el número de veces que el evento $A$ ha ocurrido y $n_{c}$ el número de veces que el experimento fue realizado. La tendencia de $n_{c}$ a infinito determina la estabilidad de las condiciones del experimento.
+}
+\subparagraph{
+Los resultados de la función se encuentran dentro del intervalo $[0,1]$ de tal forma que:
+}
+\begin{itemize}
+\item Al suceso imposible le corresponde el valor $0$.
+\item Al suceso seguro le corresponde el valor $1$.
+\item El resto de sucesos tendrán una probabilidad comprendida entre $0$ y $1$.
+\end{itemize}
+
+
+\section{Probabilidad Condicional}
+\subparagraph{
+Esta determinada por la posibilidad de que ocurra un suceso dado, como consecuencia de otro. Esta se representa mediante:
+}
+\begin{equation}
+P(A|B)=\frac{P(A \cap B)}{P(B)}
+\end{equation}
+\begin{description}
+\item[$A$] Suceso condicionado por $B$.
+\item[$B$] Suceso independiente.
+\end{description}
+\paragraph{
+Si se cambia la forma de representar la ecuación
+}
+\begin{equation}
+P(A|B)P(B)=P(A \cap B)=P(B|A)P(A)
+\end{equation}
+\begin{equation}
+P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+\end{equation}
+
+
+
+\section{Variable Aleatoria}
+\paragraph{
+Se encuentra definida por una función real que asocia un resultado numérico a cada experimento aleatorio. Por ejemplo, si el experimento aleatorio consiste en lanzar $4$ veces un dado, y el objetivo es determinar el número de veces que sale el $6$ y se define una función $X$ que asigna un valor numérico (cantidad de $6$ obtenidos) a cada resultado del experimento. De esta manera tenemos por ejemplo que $X(1632)=1$ o que $X(1234)=0$, ya que en el primer experimento sale un $6$ en el segundo lanzamiento, mientras que en el último experimento no sale ninguna vez.
+}
+\paragraph{
+Las variables aleatorias y sus distribuciones de probabilidad pueden considerarse una generalización del concepto de frecuencia. Se introducen como el modelo matemático ideal al que se aproximan las distribuciones de frecuencias que se obtendrían en una repetición indefinida de pruebas de este experimento.
+}
+\paragraph{
+Usualmente se clasifican de acuerdo al número de valores que pueden asumir: las variables aleatorias discretas (solo pueden adoptar un número finito o contable de valores) y las variables aleatorias continuas (surgen cuando tratamos con cantidades de una escala continua).
+}
+
+
+
+\section{Distribución de probabilidad / Función de densidad}
+\label{sec:DistribucionDeProbabilidad}
+\paragraph{
+Dependiendo si la variable aleatoria es discreta (v.a.d) o continua (v.a.c.), se mencionará Distribución de Probabilidad o Función de Densidad respectivamente.
+}
+\paragraph{
+Sea $X$ una v.a.d. que toma los valores ${x_1,x_2,x_3,...}$. Se define $P(X = x_i)$ como la probabilidad siguiente:
+}
+\begin{equation}
+P(X=x_i)=P(x_i)=P\{\omega \in E / X(\omega) = x_i\}
+\end{equation}
+\paragraph{
+A la tabla formada por los valores que toma la variable junto con sus probabilidades recibe el nombre de \emph{distribución de probabilidad} de la variable:\\
+}
+\begin{tabular}{ c c c c c c }
+\hline
+$X$ & $x_1$ & $x_2$ & \ldots & $x_n$ & \ldots \\
+\hline
+$P(X = x)$ & $P(X = x_1)$ & $P(X = x_2)$ & \ldots & $P(X = x_n)$ & \ldots \\
+\hline
+\end{tabular}
+\paragraph{
+Ver el ejemplo de la Figura ~\ref{fig:DistribucionDeProbabilidad}.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00003.eps}
+\caption[Distribución de Probabilidad]{Ejemplo de una Distribución de Probabilidad.}
+\label{fig:DistribucionDeProbabilidad}
+\end{figure}
+\paragraph{
+Por otra parte, dada una v.a.c. $X$, se dice que una función real $f(x)$ no negativa es la \emph{función de densidad de probabilidad} (o simplemente \emph{función de densidad}) de la variable aleatoria $X$ si el área encerrada entre la curva y el eje $0X$ es igual a la unidad y, además, la probabilidad de que $X$ se encuentre entre dos valores $x_1$ y $x_2$ con $x_1 < x_2$ es igual al área comprendida entre estos dos valores, es decir,
+}
+\begin{equation}
+\displaystyle\int_{-\infty}^{\infty}f(x)dx = 1
+\end{equation}
+\begin{equation}
+P(x_1 < X < x_2) = \displaystyle\int_{x_1}^{x_2}f(x)dx
+\end{equation}
+
+
+
+\section{Función de distribución}
+\paragraph{
+Sea $X$ una v.a., asociada a ella se define la función de distribucin $F: \mathbb{R} \rightarrow [0,1] $ de la siguiente manera:
+}
+\begin{equation}
+F(x) = P\{\omega \in E / X(\omega) \leq x\} =  P(X \leq x) \forall x \in \mathbb{R}
+\end{equation}
+\paragraph{
+Las propiedades de la función de distribución son:
+}
+\begin{description}
+\item[1.] $0 \leq F(x) \leq 1 \forall x \in \mathbb{R}$ por representar $F(x)$ la probabilidad de un suceso.
+\item[2.] $F(-\infty)= \lim_{x\rightarrow - \infty}{F(x)} = 0$; pues $F(-\infty)=P[X \leq -\infty] = P[\emptyset] = 0$.
+\item[3.] $F(\infty)= \lim_{x\rightarrow\infty}{F(x)} = 1$; pues $F(\infty)=P[X \leq \infty] = P[E] = 1$.
+\item[4.] $F$ es monótona creciente (no estrictamente), es decir, si $x_{1} < x_{2} \Rightarrow F(x_{1}) \leq F(x_{2})$.
+\item[5.] $F$ es continua por la derecha, es decir, $\lim_{h\rightarrow0^+}{F(x+h)}=F(x)$.
+\end{description}
+\paragraph{
+La función de distribución puede ser especialmente útil para calcular probabilidades ya que:
+}
+\begin{itemize}
+\item $P(X \leq x) = F(x)$ (por definición).
+\item $P(X > x) = 1 - P(X \leq x) = 1 - F(x)$.
+\item $P(x_1 < X \leq x_2) = P(X\leq x_2) - P(X\leq x_1) = F(x_2)-F(x_1)$.
+\end{itemize}
+\paragraph{
+Ver el ejemplo de la Figura ~\ref{fig:FuncionDeDistribucion}.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00004.eps}
+\caption[Función de Distribución]{Ejemplo de una Función de Distribución.}
+\label{fig:FuncionDeDistribucion}
+\end{figure}
+
+\paragraph{
+En el caso particular que dado $X$ una v.a.d., representa a la función acumulativa
+}
+\begin{equation}
+F(X) = P(X \leq x) = \displaystyle \sum_{x_i \leq x}P(X=x_i)
+\end{equation}
+\paragraph{
+Mientras que si $X$ es una v.a.c. se encuentra representado por
+}
+\begin{equation}
+F(X) = P(X \leq x) = \displaystyle \int_{-\infty}^{x}f(t)dt
+\end{equation}
+\paragraph{
+siendo $f(t) = P(X = t); \forall t \in [-\infty,\infty]$.
+}
+\paragraph{
+Luego se puede expresar $f(x) = \displaystyle\frac{dF(x)}{dx}$, que es la relación entre la función de distribución y la de densidad.
+}
+\paragraph{
+Además, si $X$ toma valores en el intervalo $(a,b)$, entonces las integrales infinitas anteriores se reducen a integrales finitas, como se muestra a continuación.
+}
+\begin{equation}
+\int_a^b f(x) dx = 1
+\end{equation}
+\begin{equation}
+F(x)=\cases{
+0 \textit{ si $x \leq a$} \cr\cr
+\displaystyle\int_a^x f(t) dt \textit{ si $a < x < b$} \cr\cr
+0 \textit{ si $x \geq b$}
+}
+\end{equation}
+
+
+
+\section{Esperanza Matemática}
+\paragraph{
+Sea $X$ una v.a.d., la \emph{media} o \emph{esperanza matemática} se encuentra determinada por la expresión:
+}
+\begin{equation}
+\mu_X = E[X] = \sum_{i=1}^n x_i . P(X = x_i)
+\end{equation}
+\paragraph{
+A diferencia de la media definida en la estadística descriptiva, los datos están probabilizados, por lo que no son exactos.
+}
+\paragraph{
+Por otra parte si $X$ es una v.a.c. quedaría determinada por la siguiente expresión:
+}
+\begin{equation}
+\mu_X = E[X] = \int_{-\infty}^\infty x . f(x) dx
+\end{equation}
+\paragraph{
+El comportamiento de la \emph{esperanza matemática} respecto de las transformaciones lineales es el siguiente:
+}
+\begin{equation}
+Y = a X + b \Rightarrow E[Y] = a E[X] + b
+\end{equation}
+
+
+
+\section{Varianza y Desviación Típica}
+\paragraph{
+Dada una v.a.d. $X$, la \emph{varianza} viene dada por:
+}
+\begin{equation}
+\sigma_X^2 = V[X] = E[(X - \mu_X)^2] = \sum_{i=1}^n(x_i - \mu_X)^2.P(X=x_i)
+\end{equation}
+\paragraph{
+y si se desarrolla el cuadrado y se aplican las propiedades de la esperanza, se obtiene:
+}
+\begin{equation}
+\sigma_X^2 = \sum_{i=1}^n(x_i^2 - 2 x_i \mu_X + \mu_X^2).P(X=x_i)
+\end{equation}
+\begin{equation}
+\sigma_X^2 = \sum_{i=1}^n x_i^2.P(X=x_i) - 2 \mu_X \sum_{i=1}^n x_i.P(X=x_i) + \mu_X^2 \sum_{i=1}^nP(X=x_i)
+\end{equation}
+\begin{equation}
+\sigma_X^2 = \sum_{i=1}^n x_i^2.P(X=x_i) - 2 \mu_X . \mu_X + 1 . \mu_X^2
+\end{equation}
+\begin{equation}
+\sigma_X^2 = \sum_{i=1}^n x_i^2.P(X=x_i) - 2 \mu_X^2 + \mu_X^2
+\end{equation}
+\begin{equation}
+\sigma_X^2 = \sum_{i=1}^n x_i^2.P(X=x_i) - \mu_X^2
+\end{equation}
+\begin{equation}
+V[X] = E[X^2] - (E[X])^2
+\end{equation}
+\paragraph{
+Por otra parte, para una v.a.c. $X$ la \emph{varianza} se define como:
+}
+\begin{equation}
+\sigma_X^2 = V[X] = E[(X - \mu_X)^2] = \int_{-\infty}^\infty(x_i - \mu_X)^2.f(x) dx
+\end{equation}
+\paragraph{
+Pudiendo simplificarse al igual que la v.a.d. mediante la siguiente formula:
+}
+\begin{equation}
+V[X] = E[X^2] - (E[X])^2
+\end{equation}
+\paragraph{
+Por último, ya sea una v.a.d o una v.a.c, la \emph{desviación típica} se define como: 
+}
+\begin{equation}
+\sigma_X = +\sqrt{\sigma_X^2}
+\end{equation}
+
+
+
+\section{Momentos}
+\paragraph{
+Dada una v.a.d. $X$, se llama \emph{momento de orden $k$ respecto del parámetro $c$} a la esperanza matemática de la variable $(X - c)^k$, es decir:
+}
+\begin{equation}
+M_k(c) = \sum_{i=1}^n (x_i - c)^k . P(X = x_i)
+\end{equation}
+\paragraph{
+Si $c = 0$ se obtienen los \emph{momentos respecto al origen} que se representan por $m_k$.
+}
+\begin{equation}
+m_k = E[X^k] = \sum_{i=1}^n x_i^k . P(X=x_i)
+\end{equation}
+\paragraph{
+Si $c = \mu_X$ se obtienen los \emph{momentos centrales} que se representan por $\mu_k$.
+}
+\begin{equation}
+\mu_k = E[(X-\mu_X)^k] = \sum_{i=1}^n (x_i - \mu_X)^k . P(X = x_i)
+\end{equation}
+\paragraph{
+Mientras que para una v.a.c. $X$, se llama \emph{momento de orden $k$ respecto del parámetro $c$} a la esperanza matemática de la variable $(X - c)^k$, es decir:
+}
+\begin{equation}
+M_k(c) = \int_{-\infty}^\infty (x - c)^k . f(x) dx
+\end{equation}
+\paragraph{
+Si $c = 0$ se obtienen los \emph{momentos respecto al origen} que se representan por $m_k$.
+}
+\begin{equation}
+m_k = E[X^k] = \int_{-\infty}^\infty x^k . f(x) dx
+\end{equation}
+\paragraph{
+Si $c = \mu_X$ se obtienen los \emph{momentos centrales} que se representan por $\mu_k$.
+}
+\begin{equation}
+\mu_k = E[(X-\mu_X)^k] = \int_{-\infty}^\infty (x - \mu_X)^k . f(x) dx
+\end{equation}
+\paragraph{
+Por último, ya sea una v.a.d. o una v.a.c., se cumplen las propiedades de los momentos:
+}
+\begin{itemize}
+\item $m_0 = 1$
+\item $m_1 = \mu_X$
+\item $m_2 = \sigma^2 + \mu_X^2$
+\item $\mu_0 = 1$
+\item $\mu_1 = 0$
+\item $\mu_2 = \sigma^2 = m_2 - \mu_X^2$
+\end{itemize}
+
+
+
+\section{Distribuciones de Probabilidad conocidas}
+\paragraph{
+La ley de probabilidades de una v.a.d. $X$ se define si se conoce su distribución de probabilidad $P(x_i) = P(X = x_i)$ con $i = 1, 2, ..$, ó bien si se conoce su función de distribución $F(x)$, cumpliéndose:
+}
+\begin{itemize}
+\item $\displaystyle\sum_{i\geq1} P(X = x_i)=1$
+\item $F(x) = P(X \leq x) = \displaystyle\sum_{x_i \leq x}P(X = x_i)$
+\end{itemize}
+\paragraph{
+A continuación se listan algunas de las principales distribuciones de la v.a.d..
+}
+
+
+\subsection{Distribución Uniforme}
+\paragraph{
+Una v.a.d. $X$ que toma los valores enteros $x_1,x_2,x_3,...,x_n$ con probabilidades
+}
+\begin{equation}
+P[X = x_k] = \frac{1}{n} \textit{ con } k = 1,2,...,n
+\end{equation}
+\paragraph{
+recibe el nombre de \emph{variable uniforme discreta}, su distribución de probabilidad \emph{distribución uniforme discreta} y se denota por $X \leadsto U(x_1,x_2,...,x_n)$.
+}
+\paragraph{
+En el caso particular de que la variable tomo como valores los primeros números naturales:
+}
+\begin{equation}
+P[X = k] = \frac{1}{n} \textit{ con } k = 1,2,...,n
+\end{equation}
+\paragraph{
+Luego, su media, varianza y desviación típica son:
+}
+\begin{itemize}
+\item $\mu_x =  \displaystyle\frac{n+1}{2}$
+\item $\sigma_x^2 = \displaystyle\frac{n^2 -1}{12}$
+\item $\sigma_x = \sqrt{\displaystyle\frac{n^2 - 1}{12}}$
+\end{itemize}
+
+
+\subsection{Distribución de Bernoulli}
+\paragraph{
+Recibe el nombre de \emph{prueba de Bernoulli}, aquel experimento que sólo admite 2 resultados posibles excluyentes:
+}
+\begin{itemize}
+\item Suceso $A$ (representa el éxito) con probabilidad $P(A) = p$.
+\item Suceso $A^c$ (representa el fracaso) con probabilidad $P(A^c) = 1 - p = q$.
+\end{itemize}
+\paragraph{
+Dada la v.a.d. $X$ asociada al experimento que asocia el valor $1$ al suceso $A$ con probabilidad $p$ y el valor $0$ al suceso $A^c$ con probabilidad $q$. Esta variable recibe el nombre de \emph{variable de Bernoulli} y se denota por $X \leadsto Ber(p)$.
+}
+\paragraph{
+La distribución de probabilidad es:
+}
+\begin{equation}
+P(X=1) = p \textit{ y } P(X=0) = 1-p = q \textit{ con } p+q = 1
+\end{equation}
+\paragraph{
+Luego, su media, varianza y desviación típica son:
+}
+\begin{itemize}
+\item $\mu_x = p$
+\item $\sigma_x^2 = p.q$
+\item $\sigma_x = \sqrt{p.q}$
+\end{itemize}
+
+
+\subsection{Distribución Binomial}
+\paragraph{
+Si se supone que se realizan $n$ pruebas de Bernoulli sucesivas e independientes. Entonces, a la v.a.d. $X$, que representa el número de veces que ocurre el suceso $A$ (éxito) en las $n$ pruebas, se la denomina \emph{variable binomial} de parámetro $n$ y $p$, y se denota por $X \leadsto B(n,p)$, siendo $p$ la probabilidad de éxito de cada prueba de Bernoulli.
+}
+\paragraph{
+La variable binomial $X$ se la puede considerar como la suma de $n$ variables independientes de Bernoulli, es decir:
+}
+\begin{equation}
+X = X_1+X_2+...+X_n \textit{ con } X_i \leadsto Ber(p) \forall i=1,2,...,n
+\end{equation}
+\paragraph{
+La v.a. definida toma los valores ${0,1,2,...,n}$ con la siguiente probabilidad:
+}
+\begin{equation}
+P(X=k)= {n \choose k}.p^k .q^{n-k} \textit{ con } \cases{
+n = 1,2,3,... \cr\cr
+k = 1,2,...,n \cr\cr
+0 < p < 1
+}
+\end{equation}
+\paragraph{
+Luego, su media, varianza y desviación típica son:
+}
+\begin{itemize}
+\item $\mu_x = n.p$
+\item $\sigma_x^2 = n.p.q$
+\item $\sigma_x = \sqrt{n.p.q}$
+\end{itemize}
+
+
+\subsection{Distribución de Poisson}
+\paragraph{
+Una v.a.d. $X$ sigue una \emph{distribución de probabilidad de Poisson} de parámetro $\lambda$ y se denota por $X \leadsto P(\lambda)$, si puede tomar todos los valores enteros $0,1,2,...$ con la siguiente probabilidad:
+}
+\begin{equation}
+P(X=k) = \frac{\lambda^k}{k!}.e^{-\lambda} \textit{ con } \cases{
+k = 0,1,2,... \cr\cr
+\lambda > 0
+}
+\end{equation}
+\paragraph{
+Luego, su media, varianza y desviación típica son:
+}
+\begin{itemize}
+\item $\mu_x = \lambda$
+\item $\sigma_x^2 = \lambda$
+\item $\sigma_x = \sqrt{\lambda}$
+\end{itemize}
+
+
+\subsection{Distribución Hipergeométrica}
+\paragraph{
+Si se considera una población de $N$ elementos de dos clases distintas de los cuales $D$ elementos son de la clase $A$ y $N - D$ elementos son de la clase $A^c$.
+}
+\paragraph{
+Al tomar un elemento de esta población, la probabilidad de que proceda de una u otra clase es:
+}
+\begin{equation}
+P(A) = \frac{D}{N} = p \rightarrow D = p. N
+\end{equation}
+\begin{equation}
+P(A^c) = \frac{N-D}{N} = q = 1-p \rightarrow N-D = q. N
+\end{equation}
+\paragraph{
+Si se considera el experimento consistente en tomar $n$ elementos consecutivos de una población sin reemplazamiento. A la v.a.d. $X$, número de elementos de la clase $A$ en una muestra de tamaño $n$, se la denomina \emph{variable hipergeométrica}.
+}
+\paragraph{
+Entonces, se denomina \emph{distribución hipergeométrica} de parámetros $N$, $D$ y $n$, y se denota con la expresión $X \leadsto H(N,D,n)$, a la distribución de probabilidad que se detalla a continuación:
+}
+\begin{equation}
+P[X=k] = \frac{{D \choose k}{N-D \choose n-k}}{{N \choose n}} = \frac{{p.N \choose k}{q.N \choose n-k}}{{N \choose n}} \textit{ con } \cases{
+N = 1,2,3,... \cr\cr
+n = 1,2,...,N \cr\cr
+p = 0,\frac{1}{N},\frac{2}{N},...,1
+}
+\end{equation}
+\paragraph{
+Luego, su media, varianza y desviación típica son:
+}
+\begin{itemize}
+\item $\mu_x = n.p$
+\item $\sigma_x^2 = n.p.q.\displaystyle\frac{N-n}{N-1}$
+\item $\sigma_x = \sqrt{n.p.q.\displaystyle\frac{N-n}{N-1}}$
+\end{itemize}
+
+
+\subsection{Distribución Geométrica o de Pascal}
+\paragraph{
+Si se considera un experimento que consiste en realizar sucesivas pruebas de Bernoulli. A la v.a.d. $X$, número de pruebas necesarias para obtener el primer éxito, se la denomina \emph{variable geométrica}.
+}
+\paragraph{
+Entonces, se denomina \emph{distribución geométrica o de Pascal} de parámetro $p$ y se denota por $X \leadsto Ge(p)$, a la distribución de probabilidad que se detalla a continuación:
+}
+\begin{equation}
+P[X = k] = p.q^{k-1} \textit{ con } \cases{
+k = 1,2,3,... \cr\cr
+0 < p < 1 ; q = 1 - p
+}
+\end{equation}
+\paragraph{
+Luego, su media, varianza y desviación típica son:
+}
+\begin{itemize}
+\item $\mu_x = \displaystyle\frac{1}{p}$
+\item $\sigma_x^2 = \displaystyle\frac{q}{p^2}$
+\item $\sigma = \displaystyle\frac{\sqrt{q}}{p}$
+\end{itemize}
+
+
+\subsection{Distribución Binomial negativa}
+\paragraph{
+Si se considera un experimento que consiste en realizar sucesivas pruebas de Bernoulli. A la v.a.d. $X$, número de fracasos antes de obtener el $n$-ésimo éxito, se la denomina \emph{binomial negativa}.
+}
+\paragraph{
+Entonces, se denomina \emph{distribución binomial negativa} de parámetros $n$ y $p$, y se denota por $X \leadsto BN(n,p)$, a la distribución de probabilidad que se detalla a continuación:
+}
+\begin{equation}
+P[X=k] = {n+k-1 \choose k}.p^n.q^k \textit{ con } \cases{
+k = 0,1,2,3,... \cr\cr
+n = 1,2,... \cr\cr
+0 < p < 1
+}
+\end{equation}
+\paragraph{
+Luego, su media, varianza y desviación típica son:
+}
+\begin{itemize}
+\item $\mu_x = \displaystyle\frac{n.q}{p}$
+\item $\sigma_x^2 = \displaystyle\frac{n.q}{p^2}$
+\item $\sigma_x = \displaystyle\frac{\sqrt{n.q}}{p}$
+\end{itemize}
+
+
+
+\section{Funciones de Densidad conocidas}
+\paragraph{
+La ley de probabilidades de una v.a.c. $X$ se define si se conoce su función de densidad $f(x)$ o bien si se conoce su función de distribución $F(x)$, tal que:
+}
+\begin{itemize}
+\item $P(a < X \leq b) = \displaystyle\int_a^b f(x) dx$
+\item $F(x) = P(X \leq x)$
+\item $\displaystyle\int_{-\infty}^\infty f(x) dx = 1$
+\end{itemize}
+\paragraph{
+Además, cumple la siguiente relación:
+}
+\begin{equation}
+F(x) = \int_{-\infty}^x f(t) dt
+\end{equation}
+\begin{equation}
+ f(x) = \frac{dF(x)}{dx}
+\end{equation}
+\paragraph{
+A continuación se listan algunas de las principales distribuciones de la v.a.c..
+}
+
+
+\subsection{Distribución Uniforme}
+\paragraph{
+Una v.a.c. $X$ sigue una \emph{distribución uniforme} en el intervalo $[a,b]$ y se denota por $X \leadsto U[a,b]$ cuando su función de densidad es:
+}
+\begin{equation}
+f(x) = \cases{
+0 \textit{ si } x \not\in [a,b] \cr\cr
+\displaystyle\frac{1}{b-a} \textit{ si } x \in [a,b]
+}
+\end{equation}
+\paragraph{
+Luego, su media, varianza y desviación típica son:
+}
+\begin{itemize}
+\item $\mu_x =  \displaystyle\frac{a+b}{2}$
+\item $\sigma_x^2 = \displaystyle\frac{(b-a)^2}{12}$
+\item $\sigma_x = \displaystyle\frac{b-a}{\sqrt{12}
+}$
+\end{itemize}
+
+
+\subsection{Distribución Normal o de Laplace-Gauss}
+\paragraph{
+Una v.a.c. $X$ sigue una \emph{distribución normal} de media $\mu$ y desviación típica $\sigma$ y se denota por $X \leadsto N(\mu,\sigma)$ cuando su función de densidad es:
+}
+\begin{equation}
+f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2} \textit{ con } \cases{
+-\infty < \mu < \infty \cr\cr
+\sigma > 0
+}
+\end{equation}
+\paragraph{
+Luego, su media, varianza y desviación típica son:
+}
+\begin{itemize}
+\item $\mu_x = \mu$
+\item $\sigma_x^2 = \sigma^2$
+\item $\sigma_x = \sigma$
+\end{itemize}
+
+\subsubsection{Variable normal tipificada}
+\paragraph{
+Si la v.a.c. $X$ es $N(\mu,\sigma)$, la \emph{variable normal tipificada} también será una distribución normal de media $\mu_z = 0$ y desviación típica $\sigma_z = 1$:
+}
+\begin{equation}
+Z = \frac{X-\mu}{\sigma}
+\end{equation}
+\paragraph{
+Entonces, $Z \leadsto N(0,1)$ y su función de densidad es:
+}
+\begin{equation}
+f(z) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^2} \textit{ con } -\infty < z < \infty
+\end{equation}
+
+
+\subsection{Distribución Gamma}
+\paragraph{
+Una v.a.c. $X$ sigue una \emph{distribución gamma} y se denota por $X \leadsto G(\alpha, p)$ cuando su función de densidad es:
+}
+\begin{equation}
+f(x) = \frac{\alpha^p}{\Gamma(p)}e^{-\alpha x}x^{p-1} \textit{ con } x > 0
+\end{equation}
+\paragraph{
+Se define la \emph{función gamma Euler} como $\Gamma(p) = \displaystyle\int_0^\infty e^{-x}x^{p-1}dx$ que resulta continua y convergente para $p>0$. Entre sus propiedades se destaca:
+}
+\begin{description}
+\item[p.1)] $\Gamma(1) = 1$
+\item[p.2)] $\Gamma(p) = (p-1) \Gamma(p-1)$
+\item[p.3)] Si $p \in \mathbb{Z}^*$ entonces $\Gamma(p) = (p-1)!$
+\end{description}
+
+
+\subsection{Distribución Exponencial}
+\paragraph{
+Es un caso particular de la \emph{distribución gamma} con $p=1$.
+}
+\begin{equation}
+X \leadsto Exp(\alpha) \textit{ si } f(x) = \cases{
+\alpha e^{-\alpha x} \textit{ si } x>0 \cr\cr
+0 \textit{ en el resto}
+}
+\end{equation}
+\paragraph{
+Luego, su media, varianza y desviación típica son:
+}
+\begin{description}
+\item $\mu_x = \displaystyle\frac{1}{\alpha}$
+\item $\sigma_x^2 = \displaystyle\frac{1}{\alpha^2}$
+\item $\sigma_x = \displaystyle\frac{1}{\alpha}$
+\end{description}
+
+
+\subsection{Distribución $\chi^2$ de Pearson}
+\paragraph{
+Es un caso particular de la \emph{distribución gamma} con $\alpha = 1/2$ y $p = n/2$ que se genera mediante la suma de los cuadrados de $n$ v.a.c. $N(0,1)$ independientes entre si, es decir, si $X_1,X_2,...,X_n$ son $n$ v.a.c. $N(0,1)$ independientes entre si, entonces la v.a.c. positiva $\chi_n^2$ recibe el nombre $\chi^2$ de Pearson con $n$ grados de libertad.
+}
+\begin{equation}
+\chi_n^2 = X_1^2 + X_2^2 + ... + X_n^2
+\end{equation}
+\paragraph{
+Entonces, su función de densidad es:
+}
+\begin{equation}
+f(x)  = \frac{1}{2^{n/2}\Gamma(n/2)} e^{-x/2}x^{(n/2)-1} \textit{ con } x > 0
+\end{equation}
+\paragraph{
+Luego, su media, varianza y desviación típica son:
+}
+\begin{description}
+\item $\mu_x = n$
+\item $\sigma_x^2 = 2n$
+\item $\sigma_x = \sqrt{2n}$
+\end{description}
+
+
+\subsection{Distribución Beta}
+\paragraph{
+Una v.a.c. $X$ sigue una \emph{distribución beta} y se denota por $X \leadsto \beta(p,q)$ si sigue la siguiente función de distribución:
+}
+\begin{equation}
+f(x) = \frac{x^{p-1}(1-x)^{q-1}}{\beta(p,q)} \textit{ con } x \in [0,1]
+\end{equation}
+\paragraph{
+Luego, se define la \emph{función beta} como:
+}
+\begin{equation}
+\beta(p,q) = \frac{\Gamma(p).\Gamma(q)}{\Gamma(p+q)} = \int_0^1 x^{p-1} (1-x)^{q-1} dx
+\end{equation}
+
+
+\subsection{Distribución $t$ de Student}
+\paragraph{
+Se denomina \emph{$t$ de Student} con $n$ grados de libertad, si las $n+1$ v.a.c. $X,X_1,X_2,...,X_n$ se distribuyen según una $N(0,\sigma)$.
+}
+\begin{equation}
+t_n = \frac{X}{\sqrt{\displaystyle\frac{1}{n}\displaystyle\sum_{i=1}^{n}X_i^2}} = \frac{Z}{\sqrt{X_n^2/n}}
+\end{equation}
+\paragraph{
+Entonces, su función de densidad es:
+}
+\begin{equation}
+f(x) = \frac{1}{\sqrt{n}.\beta\Big(\displaystyle\frac{1}{2},\displaystyle\frac{n}{2}\Big)}\Big(1+\displaystyle\frac{x^2}{n}\Big)^{-\displaystyle\frac{n+1}{2}} \textit{ con } \cases{
+n = 1,2,... \cr\cr
+-\infty < x < \infty
+}
+\end{equation}
+\paragraph{
+Luego, su media, varianza y desviación típica son:
+}
+\begin{description}
+\item $\mu_x = 0$
+\item $\sigma_x^2 = \displaystyle\frac{n}{n-2}$ si $n>2$
+\item $\sigma_x = \sqrt{\displaystyle\frac{n}{n-2}}$ si $n>2$
+\end{description}
+
+
+\subsection{Distribución F de Fisher-Snedecor}
+\paragraph{
+Sean $\chi_{n_1}^2$ y $\chi_{n_2}^2$ dos v.a.c. $\chi^2$ de Pearson con $n_1$ y $n_2$ grados de libertad respectivamente, independientes entre si. Entonces se denomina \emph{F de Fisher-Snedecor} con $n_1$ y $n_2$ grados de libertad a la variable:
+}
+\begin{equation}
+F_{n_1,n_2} = \frac{\chi_{n_1}^2 / n_1}{\chi_{n_2}^2 / n_2}
+\end{equation}
+\paragraph{
+Luego, su función de densidad es:
+}
+\begin{equation}
+f(x) = \frac{\Gamma((n_1+n_2)/2)}{\Gamma(n_1/2)\Gamma(n_2/2)}n_1^{n_1/2}n_2^{n_2/2}\frac{x^{(n_1/2)-1}}{(n_1 x+n_2)^{(n_1+n_2)/2}} \textit{ con } x>0
+\end{equation}
+
+
+
+\section{Teoría de Muestras}
+\paragraph{
+La Estadística tiene como objeto el estudio de un conjunto de personas, cosas o, en general, elementos con alguna característica común a todos ellos. Sin embargo, si se quiere obtener información sobre una población, se puede obtener datos de la totalidad (\emph{censo}) o bien de una parte (\emph{muestra}). La parte de la estadística que estudia la relación entre las muestras de una población y la población misma recibe el nombre de \emph{Teoría de Muestras}.
+}
+\paragraph{
+En la práctica, suele ocurrir que no es posible estudiar los datos de toda la población, ya que:
+}
+\begin{itemize}
+\item el número de la población es muy elevado, el estudio llevaría tanto tiempo que sería impracticable  o económicamente inviable.
+\item el estudio puede implicar la destrucción del elemento estudiado. Por ejemplo, vida útil de una lámpara.
+\item los elementos pueden existir conceptualmente, pero no en la realidad. Por ejemplo, la proporción de piezas defectuosas que producirá una máquina.
+\end{itemize}
+\paragraph{
+En estos casos se seleccionan muestras, que permiten obtener el comportamiento promedio para formular leyes generales.
+}
+\paragraph{
+Los métodos mas destacados para obtener \emph{muestras} son:
+}
+\begin{description}
+\item[Muestreo aleatorio simple] Se elige al azar con reemplazamiento (un elemento no puede ser elegido 2 veces).
+\item[Muestreo estratificado] Los elementos de la población se dividen en clases o estratos. La muestra se toma asignando un número o cuota de miembros a cada estrato (proporcional a su tamaño relativo o a su variabilidad) y escogiendo los elementos por \emph{muestreo aleatorio simple} dentro del estrato.
+\item[Muestreo sistemático] Los elementos de la población están ordenados en listas. Se divide la población en tantas partes como el tamaño muestral y se elige al azar un número de orden en cada parte de la población.
+\end{description}
+\paragraph{
+En la teoría de muestras se distinguen dos tipos de objetivos:
+}
+\begin{description}
+\item[1] Deducir características (parámetros) de la población (\emph{Inferencia Estadística}).
+\item[2] Analizar la concordancia o no de los resultados muestrales con determinadas hipótesis (\emph{Contraste de Hipótesis}).
+\end{description}
+\begin{equation}
+\textit{Población}\cases{
+	\textit{Censo} \cr\cr
+	\textit{Muestra} \cases{
+		\textit{Inferencia estadística} \cases{
+			\textit{Estimación Puntual} \cr\cr
+			\textit{Estimación por intervalos}
+		} \cr\cr
+		\textit{Contraste de hipótesis}
+	}
+}
+\end{equation}
+
+
+\subsection{Inferencia Estadística}
+\paragraph{
+Es evidente el hecho de que las medidas o características de una muestra son variables aleatorias, ya que dependen de los valores de la variable aleatoria de la población.
+}
+\paragraph{
+Por tanto, una \emph{muestra} es un vector de valores ${x_1,x_2,...,x_n} \in E^n$, teniendo asociado cada valor una probabilidad de ser elegido.
+}
+\paragraph{
+Se llamará estadístico a una función $F: E^n \rightarrow \mathbb{R}$, es decir, una \emph{formula} de las variables que transforma los valores tomados de la muestra en un número real. Además, a la distribución de $F$ se la llama distribución del estadístico en el muestreo.
+}
+\paragraph{
+Cuando se realiza una afirmación acerca de los parámetros de la población en estudio, basándose en la información contenida en la muestra se realiza una \emph{estimación puntual}, pero si se señala un intervalo de valores dentro del cual se tiene confianza que esté el valor del parámetro, se realiza una \emph{estimación por intervalos}.
+}
+
+\subsubsection{Estimación Puntual}
+\paragraph{
+El proceso de estimación puntual utiliza un estadístico para obtener algún parámetro de la población. Como tal, el estadístico utiliza una \emph{variable aleatoria} que tiene cierta distribución que depende, en general, del parámetro en cuestión. Además, se utilizarán dos criterios esenciales para medir la bondad del estimador:
+}
+\begin{itemize}
+\item que sea \emph{centrado o insesgado}, es decir, que su media coincida con el parámetro a estimar.
+\item que sea de \emph{mínima varianza} o que tenga la menor varianza entre todos los estimadores del parámetro.
+\end{itemize}
+
+\subsubsection{Estimación por Intervalos}
+\paragraph{
+En la práctica, no sólo interesa dar una estimación puntual de un parámetro $X$ sino un intervalo de valores dentro del cual se tiene confianza de que esté el parámetro. Por tanto, lo que se busca es un estimador denominado \emph{estimador por intervalo} compuesto de una pareja de estadísticos $L_i$ (límite inferior) y $L_s$ (límite superior), y siendo $1-\alpha$ el \emph{nivel de confianza}, mientras que $\alpha$ es el \emph{nivel de significación}, tales que:
+}
+\begin{equation}
+P(L_i \leq X \leq L_s) = 1 - \alpha \textit{ con } 0 < \alpha < 1
+\end{equation}
+\paragraph{
+Es decir, se llama \emph{intervalo de confianza} para el parámetro $X$ con nivel de confianza $1-\alpha$, a una expresión del tipo $L_i \leq X \leq L_s$ donde los límites $L_i$ y $L_s$ dependen de la muestra y se calculan de manera tal que si se construyen muchos intervalos, cada vez con distintos valores muestrales, el $100(1-\alpha)\%$ de ellos contendrán el verdadero valor del parámetro.
+}
+\paragraph{
+La amplitud del intervalo está íntimamente relacionada con los niveles de confianza y significación. Si la amplitud del intervalo es pequeña entonces la afirmación de que el parámetro pertenece al intervalo tiene gran significación ($\alpha$ es grande) pero ofrece poca confianza ($1-\alpha$ es pequeña). Pero si la amplitud del intervalo es grande entonces la afirmación de que el parámetro pertenece al intervalo tiene menor significación ($\alpha$ es pequeño) aunque ofrece mucha confianza ($1-\alpha$ es grande).
+}
+\paragraph{
+Por ejemplo, la afirmación ``la altura media de una población está entre $1,68$ y $1,72$ metros'' con $\alpha=0,25$ es más significativa que la afirmación ``la altura media de una población está entre $1,60$ y $1,82$ metros'' con $\alpha=0,01$, aunque esta última afirmación ofrece más confianza $1-\alpha = 0,99$ que la primera $1-\alpha=0,75$.
+}
+
+
+\subsection{Contraste de Hipótesis}
+\paragraph{
+Otro objetivo fundamental de la \emph{teoría de muestras}, es confirmar o rechazar hipótesis sobre un parámetro poblacional, mediante el empleo de muestras. Es decir, contrastar una hipótesis estadísticamente es juzgar si cierta propiedad supuesta para cierta población es compatible con lo observado en una muestra de ella.
+}
+\paragraph{
+A continuación se pasan a definir algunos conceptos importantes:
+}
+\begin{description}
+\item[Contraste de hipótesis] Procedimiento estadístico mediante el cual se investiga la aceptación o rechazo de una afirmación acerca de una o varias características de una población.
+\item[Hipótesis nula, $H_0$] Es la hipótesis que se quiere contrastar y es, por tanto, la que se acepta o rechaza como conclusión del contraste.
+\item[Hipótesis alternativa, $H_a$] Es la hipótesis que se opone a la $H_0$, de forma que si se acepta la $H_a$ se descarta la $H_0$, y recíprocamente, si se rechaza $H_a$ se acepta $H_0$.
+\item[Estadístico de contraste] Es una función de la muestra aleatoria simple, que aplica la muestra $(x_1,x_2,...,x_3)$ en un punto de la recta real.
+\item[Región de aceptación] Conjunto de valores del estadístico de contraste que lleva a la decisión de aceptar la hipótesis nula $H_0$.
+\item[Región crítica o de rechazo] Conjunto de valores del estadístico de contraste que lleva a la decisión de rechazar la hipótesis nula $H_0$.
+\item[Error tipo I, $\alpha$] Error que se comete en la decisión del contraste cuando se rechaza la hipótesis nula $H_0$, siendo cierta.
+\item[Error tipo II, $\beta$] Error que se comete en la decisión del contraste cuando se acepta la hipótesis nula $H_0$, siendo falsa.
+\item[Nivel de significación] Es la probabilidad de cometer el error de tipo I, y se denota por $\alpha$. También se suele denominar tamaño del contraste.
+\item[Potencia de un contraste, $1-\alpha$] Es la probabilidad de rechazar la hipótesis nula $H_0$, siendo falsa. Se utilizará siempre contrastes de máxima potencia (o máximo nivel de confianza), dentro de los que tienen un determinado nivel de significación.
+\item[Contraste unilateral] Es aquél cuya región crítica está formada por un solo intervalo de la recta real.
+\item[Contraste bilateral] Es aquél cuya región crítica está formada por dos intervalos disjuntos de la recta real.
+\end{description}
+\paragraph{
+Por último, para realizar un contraste de hipótesis es conveniente seguir las siguientes fases:
+}
+\begin{description}
+\item[1] Enunciado y determinación de las hipótesis $H_0$ y $H_a$.
+\item[2] Elección del nivel de significación $\alpha$.
+\item[3] Especificación del tamaño muestral.
+\item[4] Selección de estadístico o función de decisión.
+\item[5] Determinación de la región crítica.
+\item[6] Cálculo del valor del estadístico de contraste o función de decisión para la muestra particular.
+\item[7] Aceptar o rechazar la hipótesis $H_0$.
+\end{description}

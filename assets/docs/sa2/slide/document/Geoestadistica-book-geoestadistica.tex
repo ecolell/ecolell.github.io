@@ -1,0 +1,1327 @@
+\part{Geoestadística}
+\paragraph{
+Las \emph{series temporales} a diferencia de las \emph{distribuciones de frecuencias} (Ver ~\ref{sec:DistribucionDeProbabilidad}) relacionan los datos con el tiempo.
+}
+\paragraph*{
+Si en lugar del tiempo en que se realiza la medición, se contempla la ubicación en donde se realiza, se podría conformar un \emph{mapa} a partir de los \emph{valores medidos} y sus \emph{posiciones}\footnotemark[9].
+}
+\footnotetext[9]{Las posiciones (o ubicaciones) pueden ser \emph{ticks} de tiempo, puntos georeferenciados, o una mezcla de ambos.}
+\paragraph*{
+Ver en la Figura ~\ref{fig:Mapa2D}, el ejemplo de mapa de dos dimensiones con los valores muestreados para cada posición\footnotemark[10]. La población de esta muestra estaría representada por una \emph{variable regionalizada}.
+}
+\footnotetext[10]{En las posiciones $(1,2)$, $(2,4)$, $(3,3)$, $(4,1)$, $(4,2)$, $(4,4)$ y $(5,4)$ no se ha podido medir el valor, o es desconocido.}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00018.eps}
+\caption[Ejemplo de \emph{mapa 2D}]{Ejemplo de \emph{mapa 2D}.}
+\label{fig:Mapa2D}
+\end{figure}
+
+
+
+
+\chapter{Variables regionalizadas}
+\paragraph{
+En la teoría de variables regionalizadas el concepto de \emph{función aleatoria} juega un papel central. Una \emph{función aleatoria} es un conjunto de \emph{variables aleatorias} que se corresponden con los puntos del dominio $D$ bajo estudio. Esto significa que para cada punto $u$ en $D$ existe una \emph{variable aleatoria} correspondiente $Z(u)$\cite{BARDOSSY}.
+}
+\paragraph{
+Una \emph{variable regionalizada} es la realización de una \emph{función aleatoria}. Esto significa que para cada punto $u$ en el espacio $d$-dimensional el valor del parámetro $z(u)$ es una realización de la \emph{función aleatoria} $Z(u)$. 
+}
+\begin{equation}
+VR = \{ z(u) | u \in D \}
+\end{equation}
+\paragraph{
+Esta interpretación de los parámetros reconoce el hecho de que no es posible describirlos completamente usando solo métodos determinísticos. Es mas, en la mayoría de los casos es imposible verificar la suposición que indica que el parámetro es una realización de la \emph{función aleatoria}, debido a que solo se trabaja con una única realización de la \emph{función}.
+}
+\paragraph{
+Se puede describir a la \emph{función aleatoria} a partir de sus \emph{funciones de probabilidad multidimensional}. Esto significa que para cada conjunto de puntos $u_1,...,u_n$ en el dominio $D$, una \emph{función de distribución} $F_{u_1,...,u_n}$ es asignada. Si se usa esta función para cada conjunto posible de valores $w_1,...,w_n$ se podría encontrar la probabilidad $P$ utilizando:
+}
+\begin{equation}
+P(Z(u_1) < w_1,...,Z(u_n) < w_n) = F_{u_1,...,u_n}(w_1,...,w_n)
+\end{equation}
+\paragraph{
+Esto significa que las probabilidades condicionales se podrían usar para estimar promedios locales o globales. Por otra parte, hay infinitos subconjuntos en el dominio $D$, y para cada punto en $D$ usualmente un valor $z(u)$ a evaluar. Aunque existan varias mediciones del parámetro para un punto, no será posible realizar la evaluación de la función de distribución mencionada por la complejidad del calculo.
+}
+\paragraph{
+La alternativa es afirmarse en una hipótesis que reduzca la complejidad del problema.
+}
+
+
+
+
+\chapter{Hipótesis estadística}
+\paragraph{
+Si se plantea como hipótesis a la \emph{estacionalidad fuerte} de la \emph{función aleatoria} $Z(u)$, tal que para cada conjunto de puntos $u_1,...,u_n$ en el dominio $D$, para cada conjunto de valores posibles $w_1,...,w_n$ y para cada $h$ se cumple:
+}
+\begin{equation}
+P(Z(u_1) < w_1,...,Z(u_n) < w_n) = P(Z(u_1+h) < w_1,...,Z(u_n+h) < w_n)
+\end{equation}
+\paragraph{
+Esta ecuación determina que la distribución de la función aleatoria depende de la configuración de los puntos (a partir de la distancia $h$) y no de la localización de los mismos. En otras palabras la ``naturaleza'' se repite a si misma para una misma configuración (o esquema).
+}
+\paragraph{
+La suposición de la \emph{hipótesis general} basada en la \emph{estacionalidad fuerte} es útil, pero aún demasiado compleja para ser apropiada. Para tratar este problema de forma efectiva se deben agregar algunas suposiciones que simplifiquen los cálculos. Existen básicamente dos hipótesis simplificadoras: la \emph{estacionalidad de segundo orden} y la \emph{hipótesis intrínseca}.
+}
+
+
+
+\section{Estacionalidad de Segundo Orden}
+\paragraph{
+La estacionalidad es un concepto que se utilizó en el análisis de series temporales. En este caso la \emph{estacionalidad de segundo orden} se formula para espacios multidimensionales, consistiendo de dos condiciones:
+}
+\begin{itemize}
+\item El valor esperado de la \emph{función aleatoria} $Z(u)$ es constante sobre todo el dominio $D$.
+\begin{equation}
+E[Z(u)] = m
+\end{equation}
+\item La covarianza de dos \emph{variables aleatorias} correspondientes a dos localizaciones depende sólo del vector $h$ que separa a los dos puntos.
+\begin{equation}
+E[(Z(u+h)-m)(Z(u)-m))] = Cov(h)
+\label{eq:Covarianza}
+\end{equation}
+\end{itemize}
+\paragraph{
+Para el caso particular de $h = 0$:
+}
+\begin{equation}
+\label{eq:CasoParticularDeEstacionalidadDeSegundoOrden}
+Cov(0) =  E[(Z(u)-m)(Z(u)-m)] = V[Z(u)]
+\label{eq:CovarianzaConH0}
+\end{equation}
+\paragraph{
+La ecuación ~\ref{eq:CovarianzaConH0} muestra que las variables aleatorias correspondientes a los diferentes puntos en el dominio no sólo tienen la misma esperanza, sino que también tienen que tener la misma varianza finita. Esta segunda condición no siempre es conocida, pero se pueden formular hipótesis más débiles como la que se describe a continuación.
+}
+
+
+
+\section{Hipótesis Intrínseca}
+\paragraph{
+La \emph{hipótesis intrínseca} es mas débil que la \emph{estacionalidad de segundo orden}, consistiendo de las dos condiciones siguientes:
+}
+\begin{itemize}
+\item El valor esperado de la \emph{función aleatoria} $Z(u)$ es constante sobre todo el dominio $D$.
+\begin{equation}
+\label{eq:PrimeraCondicionDeLaHipotesisIntrinseca}
+E[Z(u)] = m
+\end{equation}
+\item La varianza del incremento correspondiente a dos localizaciones diferentes depende sólo del vector que las separa. A esta función dependiente del vector $h$ se la denomina \emph{semivariograma}\footnotemark[11].
+\begin{equation}
+\frac{1}{2}V[Z(u+h)-Z(u)]=\frac{1}{2}E[(Z(u+h)-Z(u))^2] = \gamma(h)
+\label{eq:Semivariograma}
+\end{equation}
+\end{itemize}
+\footnotetext[11]{Suele ser confundido con el \emph{variograma}, que sería dos veces el \emph{semivariograma}.}
+\paragraph{
+En la ecuación ~\ref{eq:Covarianza} se puede apreciar el parecido con la ~\ref{eq:Semivariograma}, pero la suposición de una \emph{varianza} finita no está explícita en la ~\ref{eq:Covarianza}. Además se puede demostrar que la \emph{estacionalidad de segundo orden} implica a la \emph{hipótesis intrínseca}, pero lo opuesto no es verdad (Ver Figura ~\ref{fig:DiagramaDeVennHIvsESO}).
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00027.eps}
+\caption[La Hipótesis Intrínseca y la Estacionalidad de Segundo Orden]{Diagrama de Venn de la Hipótesis Intrínseca y la Estacionalidad de Segundo Orden.}
+\label{fig:DiagramaDeVennHIvsESO}
+\end{figure}
+
+
+
+\section{Comparación de las dos hipótesis}
+\paragraph{
+La diferencia entre la \emph{hipótesis intrínseca} y la \emph{estacionalidad de segundo orden}, no es sólo el hecho de que la primera es más general que la segunda (Ver Figura ~\ref{fig:DiagramaDeVennHIvsESO}). La \emph{función de covarianza} (~\ref{eq:Covarianza}) está definida usando el valor esperado $m$, mientras que el \emph{semivariograma} (~\ref{eq:Semivariograma}) no depende de este valor. Esto es una ventaja, porque las \emph{tendencias} leves no influenciarán al \emph{semivariograma}, mientras que una mala estimación de la \emph{esperanza} afectaría aún mas a la \emph{función de covarianza}.
+}
+\paragraph{
+La relación entre el \emph{variograma} y la \emph{función de covarianza} es:
+}
+\begin{equation}
+2\gamma(h) = E[(Z(u+h) - Z(u))^2] = E[((Z(u+h)-m) - (Z(u)-m))^2]
+\end{equation}
+\begin{equation}
+2\gamma(h) = V[Z(u)] + V[Z(u+h)] - 2E[Z(u+h)-m)(Z(u)-m)]
+\end{equation}
+\begin{equation}
+2\gamma(h) = 2Cov(0) - 2Cov(h)
+\end{equation}
+\begin{equation}
+\label{eq:RelacionEntreSemivariogramaYCovarianza}
+\gamma(h) = Cov(0) - Cov(h)
+\end{equation}
+\paragraph{
+La Figura ~\ref{fig:VariogramaVSCovarianza} muestra la relación desarrollada.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00019.eps}
+\caption[El \emph{variograma} y la \emph{covarianza}]{El \emph{variograma} y la \emph{función de covarianza}.}
+\label{fig:VariogramaVSCovarianza}
+\end{figure}
+
+
+
+\section{Selección de la variable regionalizada}
+\paragraph{
+La \emph{variable regionalizada} bajo estudio debe cumplir ciertas condiciones para poder utilizar los métodos de análisis geoestadísticos:
+}
+\begin{description}
+\item[Homogeneidad de los datos] Los datos deberán reflejar un solo parámetro ($Z(u)$), medido por un método de medición y si es posible con la misma tecnología.
+\item[Aditividad de conjuntos] El parámetro deberá tener la propiedad\footnotemark[12] que $\frac{1}{n}\sum_{i=1}^nZ(u_i)$ tiene el mismo significado que $E[Z(u)]$.
+\end{description}
+\footnotetext[12]{Algunos parámetros naturales son claramente no aditivos, pero mediante \emph{transformaciones} pueden ser llevados a parámetros aditivos.}
+
+
+
+
+\chapter{Variograma}
+\paragraph{
+El \emph{variograma} se define como la \emph{varianza del incremento}, es por eso que debe cumplir ciertas condiciones. Estas serán explicadas en la sección ~\ref{sec:VariogramaTeorico}. Naturalmente hay propiedades  del variograma que pueden ser explicadas sin una descripción matemática precisa.
+}
+\begin{itemize}
+\item $\gamma(0) = 0$
+\item $\gamma(h) \ge 0; \forall 0 < h < rango$
+\item $\gamma(h) = tope; \forall h \ge rango$
+\item $\gamma(h) = \gamma(-h); \forall h$
+\item $Z(u)$ es continuo $\therefore$ $h_{i+1} > h_i \Longrightarrow \gamma(h_{i+1}) > \gamma(h_i)$
+\item A menudo es discontinua con respecto al origen ($\lim_{h \to 0} \gamma(h) \not = 0$), cumpliendo con el \emph{efecto pepita}\footnotemark[13].
+\end{itemize}
+\footnotetext[13]{Causado por un \emph{error de medición}, o una \emph{componente aleatoria} que no depende de la ubicación.}
+\paragraph{
+La hipótesis acerca de la existencia de un variograma es el punto clave de la geoestadística. La primera pregunta a responder será si el parámetro bajo estudio cumple con la \emph{hipótesis intrínseca}.
+}
+\paragraph{
+Si se supone que las mediciones $Z(u_i)$ de un parámetro $Z(u)$ son tomadas para las localizaciones $u_i$, siendo $i = 1,...,n$.
+}	
+\paragraph{
+Como primer paso se puede calcular los valores $(Z(u_i)-Z(u_j))^2$ para todos los pares formados, para los puntos $u_i$ u $u_j$. Luego se deberá graficar teniendo en cuenta la distancia (y tal vez la dirección) entre las ubicaciones.
+}
+\paragraph{
+La Figura ~\ref{fig:NubeDePuntosDeLaDiferencia} muestra un ejemplo de una \emph{nube de puntos} de donde luego se obtendrá un variograma.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00020.eps}
+\caption[Nube de puntos de un variograma]{Ejemplo de nube de puntos de un variograma.}
+\label{fig:NubeDePuntosDeLaDiferencia}
+\end{figure}
+\paragraph{
+Aunque la condición de la hipótesis intrínseca representada por la ecuación ~\ref{eq:Semivariograma}, no garantice que los valores obtenidos se acerquen a cierta línea, si se utiliza el valor esperado (calculado como la media aritmética) para el ejemplo de la Figura ~\ref{fig:NubeDePuntosDeLaDiferencia}, se obtendrá la Figura ~\ref{fig:MediaDeLasDiferenciasParaCadaH}, la cual es posible aproximarla a una función mediante \emph{mínimos cuadrados}.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00021.eps}
+\caption[Variograma Experimental]{Ejemplo de un variograma experimenal.}
+\label{fig:MediaDeLasDiferenciasParaCadaH}
+\end{figure}
+
+
+
+\section{Variograma Experimental}
+\paragraph{
+La función variograma tiene que ser estimada sobre la base de la información disponible. En el caso de un conjunto finito de datos la estimación del variograma puede ser hecha sólo para un conjunto finito de vectores.
+}
+\begin{equation}
+\gamma^*(h)=\frac{1}{2N(h)} \sum_{u_i-u_j=h} (Z(u_i) - Z(u_j))^2
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$u_i$] Ubicación de una medición.
+\item[$u_j$] Ubicación de una medición.
+\item[$h$] Distancia entre las ubicaciones $u_i$ y $u_j$.
+\item[$Z(u_i)$] Valor de la medición en la ubicación $u_i$.
+\item[$Z(u_j)$] Valor de la medición en la ubicación $u_j$.
+\item[$N(h)$] Cantidad de pares de ubicaciones para la distancia $h$.
+\item[$\gamma^*(h)$] Estimación del variograma para $h$.
+\end{description}
+\paragraph*{
+Si los puntos se encuentren espaciados irregularmente la condición para la sumatoria $u_i -u_j = h$ tiene que ser debilitada, para poder obtener más pares por cada $h$. Esto significa que la sumatoria debería ser hecha sobre los pares que cumplen las siguientes condiciones\footnotemark[14]:
+}
+\footnotetext[14]{En donde $|a - b|$ denota el tamaño del vector $\overrightarrow{ab}$.}
+\begin{equation}
+|u_i - u_j| - |h| \leq \varepsilon
+\end{equation}
+\begin{equation}
+\label{eq:CondicionDeAnguloDelVariogramaExperimental}
+Angulo(u_i - u_j, h) \leq \delta
+\end{equation}
+\paragraph{
+La condición ~\ref{eq:CondicionDeAnguloDelVariogramaExperimental} es utilizada en el \emph{variograma direccional}, cuando la muestra es grande y es difícil encontrar un modelo teórico representativo del variograma experimental.
+}
+
+
+
+\section{Variograma Teórico}
+\label{sec:VariogramaTeorico}
+\paragraph{
+Los \emph{variogramas experimentales} son calculados para un número finito de vectores $h$. Si los valores para el resto de los vectores $h$ debe ser definido, se podría realizar con una simple interpolación lineal. La desventaja de esto es que el resultado de la función lineal no necesariamente satisface la ecuación ~\ref{eq:Semivariograma}.
+}
+\paragraph*{
+Luego, para cualquier combinación lineal $\sum_{i=1}^n\theta_i Z(u_i)$, tal que $\sum_{i=1}^n\theta_i = 0$; la varianza es finita\footnotemark[15] y puede calcularse como:
+}
+\footnotetext[15]{Puede ser probado a partir de la \emph{hipótesis intrínseca}.}
+\begin{equation}
+\label{eq:VarianzaFinitaDelVariogramaTeorico}
+V[\sum_{i=1}^n\theta_i Z(u_i)] = - \sum_{j=1}^n \sum_{i=1}^n \theta_j \theta_i \gamma(u_i - u_j)
+\end{equation}
+\paragraph{
+Como el \emph{variograma} no puede ser negativo, la ecuación ~\ref{eq:VarianzaFinitaDelVariogramaTeorico} cumple con la condición necesaria:
+}
+\begin{equation}
+- \sum_{j=1}^n \sum_{i=1}^n \theta_j \theta_i \gamma(u_i - u_j) \geq 0
+\label{eq:CondicionParaElVariograma}
+\end{equation}
+\paragraph{
+Para relacionar los \emph{variogramas experimentales} con las funciones matemáticas adecuadas, diferentes \emph{modelos teóricos} son desarrollados. Estos pueden ser clasificados en dos grupos: \emph{modelos con un tope} y \emph{modelos sin un tope}.
+}
+
+
+\subsection{Modelos con un tope}
+\paragraph*{
+Si la \emph{estacionalidad de segundo orden} es conocida\footnotemark[16], se obtendrán variogramas que son constantes después de cierta distancia (o \emph{rango}). Esto se produce porque $Z(u)$ y $Z(u+h)$ son independientes, luego si $Cov(h) = 0$ y por la ecuación ~\ref{eq:RelacionEntreSemivariogramaYCovarianza} resulta:
+}
+\footnotetext[16]{Supone que para puntos muy distantes las \emph{variables aleatorias} correspondientes son independientes.}
+\begin{equation}
+\gamma(h) = Cov(0) ; h > rango
+\end{equation}
+\paragraph{
+Si además se tiene en cuenta la ecuación ~\ref{eq:CasoParticularDeEstacionalidadDeSegundoOrden}, entonces:
+}
+\begin{equation}
+\gamma(h) = V[Z(u)] ; h > rango
+\end{equation}
+\paragraph*{
+A continuación se mencionan algunos modelos que cumplen con esta propiedad\footnotemark[17]:
+}
+\footnotetext[17]{Cualquier combinación lineal entre los modelos con tope, producirá nuevamente un modelo con tope.}
+
+\subsubsection{Efecto pepita puro}
+\paragraph{
+Se cumple cuando no existe correlación entre las \emph{variables aleatorias} de diferentes localizaciones.
+}
+\begin{equation}
+\gamma(h) = \cases{ 0 \textit{ si } h = 0 \cr\cr C \textit{ si } h > 0}
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$h$] Distancia entre dos localizaciones.
+\item[$C$] Tope igual a la varianza $V[Z(u)]$.
+\item[$\gamma(h)$] Variograma teórico.
+\end{description}
+\paragraph{
+En la Figura ~\ref{fig:VariogramaTeoricoModeloEfectoPepita} se muestra un modelo de variograma teórico con efecto pepita puro.
+}
+\begin{figure}[ht]
+\centering
+	\includegraphics[scale=0.66]{graph/g00022.eps}
+\caption[Variograma teórico con efecto pepita puro.]{Variograma teórico que modela el efecto pepita puro.}
+\label{fig:VariogramaTeoricoModeloEfectoPepita}
+\end{figure}
+
+\subsubsection{Esférico}
+\paragraph{
+Se encuentra descripto por dos parámetros: el \emph{rango} y el \emph{tope}. El \emph{rango} determina a partir de que distancia $h$ las \emph{variables aleatorias} de las distintas localizaciones no contienen relación.
+}
+\begin{equation}
+\gamma(h) = \cases{ C\big(\frac{3}{2}\frac{h}{a}-\frac{1}{2}\frac{h^3}{a^3}\big) \textit{ si } h \leq a \cr\cr C \textit{ si } h > a}
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$h$] Distancia entre dos localizaciones.
+\item[$a$] Rango.
+\item[$C$] Tope igual a la varianza $V[Z(u)]$.
+\item[$\gamma(h)$] Variograma teórico.
+\end{description}
+\paragraph{
+En la Figura ~\ref{fig:VariogramaTeoricoModeloEsferico} se muestra un modelo esférico de variograma teórico.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00023.eps}
+\caption[Variograma teórico del modelo esférico.]{Variograma teórico del modelo esférico.}
+\label{fig:VariogramaTeoricoModeloEsferico}
+\end{figure}
+
+\subsubsection{Exponencial}
+\paragraph{
+A diferencia del \emph{modelo esférico} todas las \emph{variables aleatorias} se encuentran relacionadas en el ámbito teórico. Aunque debido a lo diminuto de algunas relaciones, se considera un \emph{rango} no teórico de $3a$.
+}
+\begin{equation}
+\gamma(h) = C(1-e^{-\frac{h}{a}})
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$h$] Distancia entre dos localizaciones.
+\item[$a$] Parámetro que determina el rango (no teórico).
+\item[$C$] Tope aproximado a $V[Z(u)]$ (asintótica horizontalmente).
+\item[$e$] Base de los logaritmos naturales.
+\item[$\gamma(h)$] Variograma teórico.
+\end{description}
+\paragraph{
+En la Figura ~\ref{fig:VariogramaTeoricoModeloExponencial} se muestra un modelo exponencial de variograma teórico.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00024.eps}
+\caption[Variograma teórico del modelo exponencial.]{Variograma teórico del modelo exponencial.}
+\label{fig:VariogramaTeoricoModeloExponencial}
+\end{figure}
+
+\subsubsection{Gaussiano}
+\paragraph{
+A diferencia del \emph{modelo esférico} todas las \emph{variables aleatorias} se encuentran relacionadas en el ambito teórico. Aunque debido a lo diminuto de algunas relaciones, se considera un \emph{rango} no teórico de $\sqrt{3}a$. A diferencia del \emph{modelo exponencial} muestra un comportamiento cuadrático conforme tiende a $0$.
+}
+\begin{equation}
+\gamma(h) = C(1-e^{-\frac{h^2}{a^2}})
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$h$] Distancia entre dos localizaciones.
+\item[$a$] Parámetro que determina el rango (no teórico).
+\item[$C$] Tope aproximado a $V[Z(u)]$ (asintótica horizontalmente).
+\item[$e$] Base de los logaritmos naturales.
+\item[$\gamma(h)$] Variograma teórico.
+\end{description}
+\paragraph{
+En la Figura ~\ref{fig:VariogramaTeoricoModeloGaussiano} se muestra un modelo gaussiano de variograma teórico.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00025.eps}
+\caption[Variograma teórico del modelo Gaussiano.]{Variograma teórico del modelo Gaussiano.}
+\label{fig:VariogramaTeoricoModeloGaussiano}
+\end{figure}
+
+
+\subsection{Modelos sin un tope}
+\paragraph{
+Si la \emph{estacionalidad de segundo orden} no es conocida (por ejemplo, la varianza $V[Z(u)]$ no es finita), pero la \emph{hipótesis intrínseca} es verdadera, se obtendrán variogramas que no son constantes, ni se acercan a una asíntota, después de cierta distancia.
+}
+\paragraph{
+A continuación se mencionan algunos modelos que cumplen con esta propiedad:
+}
+
+\subsubsection{Potencial}
+\paragraph{
+Se cumple cuando el modelo se puede representar mediante la potencia de un número $\lambda$.
+}
+\begin{equation}
+\gamma(h) = C h^\lambda
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$h$] Distancia entre dos localizaciones.
+\item[$\lambda$] Definida en el intervalo $(0,2)$.
+\item[$C$] Constante.
+\item[$\gamma(h)$] Variograma teórico.
+\end{description}
+\paragraph{
+En la Figura ~\ref{fig:VariogramaTeoricoModeloPotencial} se muestra un modelo potencial de variograma teórico.
+}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.66]{graph/g00026.eps}
+\caption[Variograma teórico del modelo potencial.]{Variograma teórico del modelo potencial.}
+\label{fig:VariogramaTeoricoModeloPotencial}
+\end{figure}
+
+\subsubsection{Complejos}
+\paragraph{
+Los modelos listados previamente satisfacen la condición ~\ref{eq:CondicionParaElVariograma}. Desafortunadamente estos modelos no siempre describen la variabilidad de las \emph{variables regionalizadas} bajo estudio. La combinación de los modelos anteriores amplía el conjunto de los \emph{variogramas teóricos}.
+}
+\paragraph{
+Si $\gamma_1(h),...,\gamma_K(h)$ son modelos de variogramas que cumplen la condición ~\ref{eq:CondicionParaElVariograma} y $c_1,...,c_K$ son números no negativos, luego la ecuación ~\ref{eq:ModeloComplejo} satisface ~\ref{eq:CondicionParaElVariograma}.
+}
+\begin{equation}
+\gamma(h) = \sum_{k=1}^K c_k \gamma_k(h)
+\label{eq:ModeloComplejo}
+\end{equation}
+
+
+
+\section{Ajuste a un modelo teórico}
+\paragraph{
+Dado que los \emph{variogramas experimentales} no cumplen con las propiedades estadísticas detalladas, es necesario ajustarlos a un \emph{variograma teórico}.
+}
+\paragraph{
+Existen varias aproximaciones: \emph{a ojo}, \emph{mínimos cuadrados} y \emph{probabilidad máxima}.
+}
+
+
+\subsection{A ojo}
+\paragraph{
+En este método se intenta calcular ``a ojo'' el ajuste del \emph{variograma empírico} a un \emph{modelo teórico de variograma}.
+}
+\paragraph{
+Al igual que en ~\ref{sec:AnalisisGraficoDeLaTendenciaEnSeriesTemporales}, es subjetivo al experto que lo lleva a cabo. Aunque se lo suele usar para detectar valores extremos, errores de medición, etc.
+}
+
+
+\subsection{Mínimos cuadrados}
+\label{sec:AjusteDeVariogramaTeoricoPorMinimosCuadrados}
+\paragraph{
+Este método a diferencia del anterior, es automático. Aunque, por otra parte, los errores de medición y valores extremos no pueden ser detectados.
+}
+\paragraph*{
+Otra desventaja es que el método asume que los errores\footnotemark[18] son independientes de la curva de ajuste (o variograma teórico), y esto último no es cierto.
+}
+\footnotetext[18]{Desviación entre el variograma experimental y el variograma teórico.}
+
+
+\subsection{Probabilidad máxima}
+\paragraph{
+Este método postula para cada distancia $h_i$ una distribución $f_{h_i}$. Esta distribución describe la desviación entre el conjunto de valores obtenidos para un $h_i$ y el valor del modelo teórico.
+}
+\paragraph{
+A cada distribución se asocia una probabilidad que puede ser calculada a partir de la comparación de la esperanza y el valor del modelo teórico.
+}
+\begin{equation}
+P(h_i) = \frac{E[f_{h_i}(u)]}{\gamma^*(h_i)}
+\end{equation}
+\paragraph{
+La combinación de probabilidades que produce el mayor producto es la \emph{probabilidad máxima} (PM):
+}
+\begin{equation}
+PM = \prod_{i=1}^n P(h_i)
+\end{equation}
+\paragraph{
+Dado que se desea \emph{maximizar} la probabilidad máxima y \emph{minimizar} el error (calculado por la diferencia al cuadrado) al mismo instante, se puede \emph{minimizar} la ecuación ~\ref{eq:DiferenciaAlCuadradoConProbabilidadMaxima} para obtener el ajuste deseado.
+}
+\begin{equation}
+\label{eq:DiferenciaAlCuadradoConProbabilidadMaxima}
+\varepsilon = \sum_{i=1}^n (\gamma^*(h_i) - \gamma(h_i))^2 (1 - P(h_i))
+\end{equation}
+\paragraph{
+Al igual que ~\ref{sec:AjusteDeVariogramaTeoricoPorMinimosCuadrados} es un estimador automático. Además supone independencia entre los diferentes puntos, lo cual no es determinable en la mayoría de los casos.
+}
+
+
+
+\section{Isotropía y anisotropía}
+\paragraph{
+La variable regionalizada es \emph{isotrópica} si su variograma depende sólo de el tamaño del vector $h$. En este caso el variograma experimental puede ser calculado con la condición limitante:
+}
+\begin{equation}
+|u_i - u_j|=|h|
+\end{equation}
+\paragraph*{
+La \emph{isotropía} puede ser probada si hay una cantidad suficiente de datos ``bien espaciados''\footnotemark[19]. En este caso los variogramas experimentales correspondientes a diferentes direcciones pueden ser calculados y comparados.
+}
+\footnotetext[19]{No necesariamente alineados.}
+\paragraph{
+Aunque en muchos casos, cuando el conjunto de datos es pequeño, se debe asumir que el variográma es istotrópico para mejorar la calidad del cálculo (del variograma) para cada distancia $h$.
+}
+\paragraph{
+Si una función no es \emph{isotrópica}, entonces esta puede mostrar diferentes tipos de \emph{anisotropías}, como la \emph{geométrica} o la \emph{zonal}.
+}
+
+
+\subsection{Anisotropía geométrica}
+\paragraph*{
+La variable regionalizada tiene una \emph{anisotropía geométrica} si hay una transformación de coordenadas $T$ tal que $Z(u') = Z(T(u))$ es isotrópica. Esto significa que para la \emph{anisotropía geométrica} una simple transformación de coordenadas conduce a un caso donde sólo las distancias\footnotemark[20] (del nuevo sistema de coordenadas) juegan un rol.
+}
+\footnotetext[20]{Dejando de depender del ángulo de la dirección en la cual se realiza el variograma.}
+\paragraph{
+Esta transformación debe ser aplicada cuando el valor del \emph{tope} sea el mismo para cada dirección, pero el \emph{rango} varía en cada una de ellas.
+}
+\paragraph*{
+Si se dibuja el \emph{rango} para cada dirección y se obtiene una elipse\footnotemark[21], primero se deberá rotar y luego se realizará la transformación $T$ (a partir de las ecuaciones ~\ref{eq:XTransformadaPorAnisotropiaGeometrica} y ~\ref{eq:YTransformadaPorAnisotropiaGeometrica}) para que se logre una circunferencia. 
+}
+\footnotetext[21]{En la tridimensión se utiliza una \emph{elipsoide}.}
+\begin{equation}
+\label{eq:XTransformadaPorAnisotropiaGeometrica}
+x'=\lambda(x \cos \varphi + y \sin \varphi)
+\end{equation}
+\begin{equation}
+\label{eq:YTransformadaPorAnisotropiaGeometrica}
+y'= -x \sin \varphi + y \cos \varphi
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$(x,y)$] Coordenada original.
+\item[$\lambda$] Proporción de transformación.
+\item[$\varphi$] Ángulo entre el eje de coordenadas $x$ y el eje principal de la anisotropía (elipse).
+\item[$(x',y')$] Coordenada resultante de la transformación.
+\end{description}
+\paragraph{
+Una vez realizada la transformación se continúa con un análisis \emph{isométrico}, y por último se deberá volver a realizar una transformación inversa, para obtener los resultados con el sistema de coordenadas originales.
+}
+
+
+\subsection{Anisotropía zonal}
+\paragraph{
+La variable regionalizada tiene una \emph{anisotropía zonal} si los \emph{rangos} no convergen a una elipse, o si los valores de \emph{tope} son diferentes.
+}
+\paragraph{
+En este caso se deberá utilizar un modelo de anisotropía complejo, para el que cada termino del modelo puede mostrar diferentes \emph{anisotropías geométricas}.
+}
+
+
+
+
+\chapter{Kriging}
+\paragraph{
+El variograma es la herramienta principal para algunos cálculos \emph{geoestadísticos}, como estimar el valor del parámetro en lugares no muestreados o el valor promedio de un parámetro en un área determinada.
+}
+\paragraph*{
+Estos tipos de cálculos pueden ser llevados a cabo a partir de procedimientos como  el \emph{Kriging Ordinario} o los \emph{métodos no estacionales}.
+}
+
+
+
+\section{Kriging Ordinario}
+\paragraph{
+Es el más simple de todos los procedimientos. La estimación puede ser realizada para un punto particular o se podría calcular un valor promedio para un bloque determinado.
+}
+
+
+\subsection{Kriging Ordinario Puntual}
+\paragraph{
+El problema de la interpolación (y la extrapolación) es la estimación de un parámetro en una posición no muestreada.
+}
+\paragraph{
+Un estimador lineal que combine los valores muestreados de las \emph{variables regiona\-lizadas} deberá ser encontrado. Esto significa que el estimador es de la forma:
+}
+\begin{equation}
+Z^*(u) = \sum_{i=1}^n \lambda_i Z(u_i)
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$Z^*(u)$] Estimación para cualquier localización $u$.
+\item[$Z(u_i)$] Valor del parámetro muestreado en la localización $u_i$.
+\item[$\lambda_i$] Coeficientes de ajuste de la estimación al parámetro.
+\end{description}
+\paragraph{
+Existen infinitos valores para los coeficientes $\lambda_i$ y es deseable seleccionarlos manteniendo insesgado al estimador, generando la varianza de la estimación más baja posible.
+}
+\paragraph{
+Usando la \emph{estacionalidad de segundo orden} o la \emph{hipótesis intrínseca} se tiene:
+}
+\begin{equation}
+E[Z(u)]=m \forall u \in D
+\end{equation}
+\paragraph{
+Luego el estimador lineal queda como:
+}
+\begin{equation}
+E[Z^*(u)]= \sum_{i=1}^n \lambda_i E[Z(u_i)] = m
+\end{equation}
+\paragraph{
+La condición que tienen que cumplir los coeficientes para que la estimación sea insesgada es:
+}
+\begin{equation}
+\sum_{i=1}^n \lambda_i = 1
+\label{eq:CondicionDeEstimacionInsesgada}
+\end{equation}
+\paragraph{
+Luego, si se utiliza la hipótesis de \emph{estacionalidad de segundo orden} la \emph{varianza de la estimación} está dada por la función cuadrática:
+}
+\begin{equation}
+\sigma^2(u) = V[Z(u)-Z^*(u)]=E[(Z(u)-\sum_{i=1}^n \lambda_i Z(u_i))^2]
+\end{equation}
+\begin{equation}
+\sigma^2(u) = E[Z(u)^2 + \sum_{i=1}^n\sum_{j=1}^n \lambda_i\lambda_j Z(u_i)Z(u_j) - 2 \sum_{i=1}^n \lambda_i Z(u_i)Z(u)]
+\end{equation}
+\begin{equation}
+\sigma^2(u) = Cov(0) + \sum_{i=1}^n\sum_{j=1}^n \lambda_i\lambda_j Cov(u_i - u_j) - 2 \sum_{i=1}^n \lambda_i Cov(u_i - u)
+\end{equation}
+\paragraph*{
+El \emph{mejor estimador lineal insesgado} (en inglés BLUE\footnotemark[22]) es aquel que hace mínima a la \emph{varianza de la estimación}, teniendo en cuenta la condición ~\ref{eq:CondicionDeEstimacionInsesgada}.
+}
+\footnotetext[22]{Best Linear Unbiased Estimator.}
+\paragraph{
+Este \emph{problema de estimación restringida} puede ser resuelto mediante el \emph{multiplicador de Lagrange} $\mu$ \cite{LAGRANGEMULTIPLIER}.
+}
+\begin{equation}
+K(\lambda, \mu) = \sigma^2(u) - 2 \mu(\sum_{i=1}^n\lambda_i - 1))
+\end{equation}
+\paragraph{
+Si se realizan las derivadas parciales para cada $\lambda_i$ y con respecto a $\mu$, y se iguala a cero se encontrará la \emph{varianza mínima de la estimación}.
+}
+\begin{equation}
+\frac{dK(\lambda_i, \mu)}{d\lambda_i} = 0 \forall i; u_i \in D
+\end{equation}
+\begin{equation}
+\frac{dK(\lambda, \mu)}{d\mu} = 0
+\end{equation}
+\paragraph*{
+El \emph{sistema de kriging}\footnotemark[23] en términos de \emph{covarianzas} queda compuesto por:
+}
+\footnotetext[23]{Es un sistema de ecuaciones resultante de la minimización teniendo en cuenta al \emph{Multiplicador de Lagrange} $\mu$ y a los \emph{coeficientes} $\lambda_i$.}
+\begin{equation}
+\sum_{j=1}^n \lambda_j Cov(u_i - u_j) - \mu = Cov(u_i - u) \forall i = 1,...,n
+\end{equation}
+\begin{equation}
+\sum_{j=1}^n \lambda_j = 1
+\end{equation}
+\paragraph{
+Si en lugar de la \emph{estacionalidad de segundo orden} se utiliza la \emph{hipótesis intrínseca}, la \emph{varianza de la estimación} queda dada por:
+}
+\begin{equation}
+\sigma^2(u) = V[Z(u) - Z^*(u)] = -\sum_{j=1}^n\sum_{i=1}^n \lambda_j\lambda_i \gamma(u_i - u_j) + 2 \sum_{i=1}^n \lambda_i \gamma(u_i - u)
+\end{equation}
+\paragraph{
+Y al minimizarla, el \emph{sistema de kriging} en términos de \emph{variogramas} es:
+}
+\begin{equation}
+\sum_{j=1}^n \lambda_j \gamma(u_i - u_j) + \mu = \gamma(u_i - u) \forall i = 1,...,n
+\end{equation}
+\begin{equation}
+\sum_{j=1}^n \lambda_j = 1
+\end{equation}
+
+
+\subsection{Kriging Ordinario por Bloques}
+\paragraph{
+Con frecuencia lo que se necesita es un promedio de los valores del parámetro sobre cierta área, en lugar de un valor específico de una ubicación. Esto podría ser realizado estimando una gran cantidad de puntos en el área y tomando el promedio de los valores.
+}
+\paragraph{
+Una forma más simple de hacerlo, es suponer que el promedio del parámetro sobre cierto volumen $B$ (o bloque) perteneciente al dominio $D$ va a ser estimado.
+}
+\begin{equation}
+Z(B) = \frac{1}{|B|}\int_{B}Z(u)du
+\end{equation}
+\paragraph{
+Nuevamente, se debe encontrar un \emph{estimador} de la forma:
+}
+\begin{equation}
+Z^*(B)=\sum_{i=1}^n\lambda_i Z(u_i)
+\end{equation}
+\paragraph{
+La condición que mantendrá a la \emph{estimación insesgada} será:
+}
+\begin{equation}
+\sum_{i=1}^n\lambda_i = 1
+\end{equation}
+\paragraph{
+La \emph{varianza de la estimación} será:
+}
+\begin{equation}
+\sigma^2(B) = V[Z(B)-Z^*(B)] = - \overline{\gamma}(B,B) - \sum_{j=1}^n\sum_{i=1}^n \lambda_j \lambda_i \gamma(u_i - u_j) + 2 \sum_{i=1}^n \lambda_i \overline{\gamma}(u_i,B)
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$B$] Bloque, volumen.
+\item[$\gamma(h)$] Variograma para una distancia $h$ dada.
+\item[$\overline{\gamma}(B,B)$] Variograma promedio entre dos bloques.
+\item[$\overline{\gamma}(u_i,B)$] Variograma promedio entre un punto y un bloque.
+\end{description}
+\paragraph{
+Si $\overline{\gamma}(u_i,B)$ y $\overline{\gamma}(B,B)$ se calculan mediante:
+}
+\begin{equation}
+\overline{\gamma}(u_i,B) = \frac{1}{|B|}\int_{B}\gamma(u_i - u) du
+\end{equation}
+\begin{equation}
+\overline{\gamma}(B,B) = \frac{1}{|B|}\int_{B}\int_{B}\gamma(u - v) du dv
+\end{equation}
+\paragraph{
+Luego, la minimización de $\sigma^2(B)$ manteniendo la estimación insesgada produce el siguiente \emph{sistema de ecuaciones}:
+}
+\begin{equation}
+\sum_{j=1}^n \lambda_j \gamma(u_i - u_j) + \mu = \overline{\gamma}(u_i, B) \forall i = 1,...,n
+\end{equation}
+\begin{equation}
+\sum_{j=1}^n \lambda_j = 1
+\end{equation}
+
+
+\subsection{El variograma y el kriging}
+\paragraph{
+Como la \emph{varianza de la estimación} y las \emph{ecuaciones del kriging} están calculadas con la ayuda del \emph{variograma}, es evidente que este último cumple un rol importante.
+}
+\paragraph{
+Utilizar el \emph{variograma} en el kriging no sólo produce el valor esperado, sino que además calcula la \emph{varianza de la estimación} correspondiente. Esto último determina la calidad de la estimación, ya que una varianza alta significa poca certeza en la estimación. Por otro lado, la \emph{varianza de la estimación} será cero para las estimaciones de las posiciones muestreadas.
+}
+\paragraph{
+Comparando las \emph{varianzas de las estimaciones} que se obtienen al usar el \emph{kriging puntual} y el \emph{kriging por bloques}, se puede ver que la varianza del último es notablemente menor.
+}
+\paragraph{
+Esto se debe al término adicional $\overline{\gamma}(B,B)$ de la \emph{varianza de la estimación por bloques}. A medida que $\overline{\gamma}(B,B)$ aumenta con el \emph{tamaño del bloque}, la \emph{varianza de la estimación} decrece, dando mayor \emph{exactitud} que una estimación puntual.
+}
+
+
+\subsection{El Kriging en la práctica}
+\paragraph{
+Usualmente los puntos utilizados para el \emph{kriging puntual} o por \emph{bloques} son seleccionados dentro de cierta distancia (o rango) teniendo en cuenta la \emph{anisotropía}.
+}
+\paragraph{
+Si aún así continúan quedando demasiados puntos, se selecciona un \emph{vecindario} con los $n$ puntos más cercanos, donde $n$ es un límite preestablecido.
+}
+\paragraph{
+Es importante destacar que la selección de un vecindario falla si los puntos se encuentran esparcidos irregularmente. En este último caso es necesario utilizar una búsqueda direccional.
+}
+
+
+\subsection{Kriging con un variograma ``falso''}
+\paragraph{
+Algunas veces, el \emph{kriging} es obtenido mediante la utilización de \emph{variogramas teóricos} en lugar de los \emph{variogramas experimentales}. En este caso al realizar la selección de los parámetros del variograma, se debe tener en cuenta que se afecta directamente a los resultados del kriging.
+}
+\paragraph{
+Usualmente se suele utilizar un \emph{modelo complejo} con dos elementos: un \emph{efecto pepita} y un \emph{modelo simple} (esférico, exponencial, gaussiano o lineal).
+}
+
+
+\subsection{Validación cruzada}
+\paragraph{
+Dado que la peculiaridad de las observaciones complica la utilización de \emph{pruebas estadísticas}, y que la subjetividad del ajuste ``a ojo'' en los \emph{variogramas teóricos} debería ser controlada para reducir su error, la \emph{validación cruzada} es un procedimiento que prueba al \emph{variograma teórico} estimado.
+}
+\paragraph{
+Para cada localización de muestreo $u_i$ los valores son estimados (usando kriging) como si fueran desconocidos. Este estimador es representado por $Z^v(u_i)$ y su correspondiente \emph{desvío estándar} $\sigma^v(u_i)$.
+}
+\paragraph{
+Luego, los valores de la estimación son comparados con los valores verdaderos $Z(u_i)$. Si la \emph{desviación estándar del kriging} es interpretada como un \emph{error de estimación} con distribución normal ($N(0,1)$), entonces:
+}
+\begin{equation}
+S(u_i) = \frac{Z^v(u_i) - Z(u_i)}{\sigma^v(u_i)} ; S(u) \leadsto N(0,1)
+\end{equation}
+\paragraph{
+En caso de diferir de $N(0,1)$ significa que el ajuste puede ser mejorado. Por otra parte, este procedimiento suele utilizarse para detectar \emph{valores extremos} o \emph{atípicos}.
+}
+
+
+\subsection{Kriging con datos inciertos}
+\paragraph{
+Frecuentemente un mismo parámetro es medido o estimado mediante diferentes métodos. Si estos métodos producen resultados con diferentes precisiones, las mediciones deberían ser manejadas teniendo en cuenta estas diferencias.
+}
+\paragraph{
+Para cada $u_i$ existe un \emph{término de error} $\varepsilon(u_i)$ que cumple con las siguientes propiedades:
+}
+\begin{itemize}
+\item Insesgada
+\begin{equation}
+E[\varepsilon(u_i)] = 0
+\end{equation}
+\item Sin correlación
+\begin{equation}
+E[\varepsilon(u_i)\varepsilon(u_j)] = 0 \forall i \not= j
+\end{equation}
+\item Sin correlación con los valores del parámetro
+\begin{equation}
+E[\varepsilon(u_i)Z(u_i)] = 0
+\end{equation}
+\end{itemize}
+\paragraph{
+Por conveniencia se desarrolla sólo la estimación para un \emph{bloque} $B$, que está dada por:
+}
+\begin{equation}
+Z^*(B) = \sum_{i=1}^n \lambda_i (Z(u_i) + \varepsilon(u_i))
+\end{equation}
+\paragraph{
+La condición que mantendrá \emph{insesgados} a la variable aleatoria de la estimación seguirá siendo:
+}
+\begin{equation}
+\sum_{i=1}^n \lambda_i = 1
+\end{equation}
+\paragraph{
+Y la \emph{varianza de la estimación} es:
+}
+\begin{equation}
+\sigma^2(B) = V[Z(B)-Z^*(B)]
+\end{equation}
+\begin{equation}
+\sigma^2(B) = -\overline{\gamma}(B,B) - \sum_{j=1}^n \sum_{i=1}^n \lambda_j \lambda_i \gamma(u_i - u_j) + 2 \sum_{i=1}^n \lambda_i \overline{\gamma}(u_i,B) + \sum_{i=1}^n \lambda_i^2 E[\varepsilon(u_i)^2]
+\end{equation}
+\paragraph{
+Al minimizar la \emph{varianza de la estimación} se obtiene un sistema de ecuaciones similar al \emph{sistema del kriging ordinario}:
+}
+\begin{equation}
+\sum_{j=1}^n \lambda_j \gamma(u_i - u_j) + \lambda_i E[\varepsilon(u_i)^2] + \mu = \overline{\gamma}(u_i,B) \forall i = 1,...,n
+\end{equation}
+\begin{equation}
+\sum_{j=1}^n \lambda_j = 1
+\end{equation}
+
+
+\subsection{Kriging Simple}
+\paragraph{
+El \emph{kriging ordinario} supone que el \emph{valor esperado} es el mismo para cualquier posición del dominio $D$, descartando la existencia de variables regionalizadas que posean una variabilidad en su valor esperado para distintas posiciones del dominio.
+}
+\paragraph{
+El \emph{kriging simple} es una alternativa al \emph{kriging ordinario} que tiene en cuenta al \emph{valor medio esperado} $m(u)$ (no necesariamente constante) en todo el dominio $D$.
+}
+\paragraph{
+La función de estimación queda expresada como:
+}
+\begin{equation}
+Z^*(u) = m(u) + \sum_{i=1}^n \lambda_i (Z(u_i) - m(u_i))
+\end{equation}
+\paragraph{
+La condición que mantendrá \emph{insesgados} a la variable aleatoria de la estimación es:
+}
+\begin{equation}
+E[Z^*(u)-Z(u)]=m(u)+\sum_{i=1}^n\lambda_i E[Z(u_i)-m(u_i)] - m(u) = 0
+\end{equation}
+\paragraph{
+La varianza del \emph{estimador} es:
+}
+\begin{equation}
+V[Z^*(u)-Z(u)] = E[Z^*(u)^2 + Z(u)^2 - 2 Z^*(u) Z(u)]
+\end{equation}
+\begin{equation}
+V[Z^*(u)-Z(u)] = \sum_{i=1}^n \sum_{j=1}^n \lambda_i \lambda_j Cov(u_i - u_j) + Cov(0) - 2 \sum_{i=1}^n \lambda_i Cov(u_i - u)
+\end{equation}
+\paragraph{
+La \emph{varianza de la estimación} es mínima si:
+}
+\begin{equation}
+\frac{dV[Z^*(u)-Z(u)]}{d\lambda_i} = 0 \forall i; u_i \in D
+\end{equation}
+\paragraph{
+Por último el \emph{sistema de ecuaciones} para el \emph{kriging simple} tiene la siguiente forma:
+}
+\begin{equation}
+\sum_{j=1}^n \lambda_j Cov(u_i - u_j) = Cov(u_i - u) \forall i = 1,...,n
+\end{equation}
+
+
+
+\section{Métodos no estacionales}
+\paragraph{
+Desafortunadamente, muchos \emph{parámetros naturales} no cumplen con la \emph{hipótesis intrínseca} por causa de cambios \emph{sistemáticos} en el valor del parámetro medido.
+}
+\paragraph{
+Los \emph{cambios sistemáticos} contaminan el \emph{variograma experimental} y conducen a resultados inaceptables.
+}
+\paragraph{
+Si se supone que la primera condición (~\ref{eq:PrimeraCondicionDeLaHipotesisIntrinseca}) de la \emph{hipótesis intrínseca} no es constante y en su lugar se tiene una deriva sistemática no conocida. Y por otra parte, la diferencia entre la variable regionalizada y la deriva es intrínseca, entonces:
+}
+\begin{equation}
+\label{eq:VariableAleatoriaRegionalizadaConDeriva}
+Z(u) = f(u) + Y(u)
+\end{equation}
+\begin{equation}
+Z(u) - f(u) = Y(u)
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$Z(u)$] Valor del parámetro (variable regionalizada).
+\item[$Y(u)$] Función intrínseca, tal que $E[Y(u)] = 0$.
+\item[$f(u)$] Función que representa la \emph{deriva}.
+\end{description}
+\paragraph{
+El método de ajuste que se suele utilizar para estimar la \emph{deriva} es el \emph{ajuste por mínimos cuadrados}. Esto requiere que no exista relación entre los \emph{residuos}, quedando independientes entre si. Pero contradice la ecuación mas general, dado que la \emph{variable regionalizada} es la suma de una \emph{deriva} $f(u)$ y un \emph{residuo intrínseco} $Y(u)$. Solo será verdadero si los residuos tienen variogramas con efecto pepita puro.
+}
+\paragraph{
+Para tratar con la deriva se presentarán dos métodos diferentes: el \emph{kriging universal} y el \emph{kriging con deriva externo}.
+}
+
+
+
+\subsection{Kriging Universal}
+\paragraph{
+El problema principal en los casos no estacionales es que la estimación de la \emph{deriva} requiere del \emph{variograma}, pero la estimación del variograma requiere del conocimiento de la deriva.
+}
+\paragraph{
+El \emph{kriging universal} es un método donde la \emph{deriva} se obtiene de forma iterativa con el fin de estimar el \emph{variograma}, esto es posible porque en el kriging la deriva no se utiliza, y su efecto es filtrado.
+}
+\paragraph{
+El agregado de constantes a la \emph{variable regionalizada} no afecta al \emph{variograma}. Por lo que la deriva $f(u)$ debe ser contemplada como una constante aditiva:
+}
+\begin{equation}
+\label{eq:FormaGeneralDeLaDeriva}
+f(u) = \sum_{s=0}^S b_s f_s(u)
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$f_0(u)$] es igual a $1$.
+\item[$b_s$] deben ser averiguados para $s>0$.
+\end{description}
+\paragraph{
+La función anterior es cierta en un ámbito ``local'', dentro de un \emph{vecindario}. Los coeficientes $b_s$ son estimados a partir de una combinación lineal de los \emph{valores medidos}:
+}
+\begin{equation}
+b_s^* = \sum_{i=1}^n d_{i,s} Z(u_i)
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$b_s^*$] Estimación del los coeficientes $b_s$.
+\item[$d_{i,s}$] Coeficiente que determina la relación lineal con cada $Z(u_i)$.
+\item[$Z(u_i)$] Valor medido en la posición $u_i$.
+\end{description}
+\paragraph{
+Estos estimadores deberían ser insesgados, por lo que deberán cumplir la condición:
+}
+\begin{equation}
+E[b_s^*] = b_s = \sum_{i=1}^n d_{i,s} E[Z(u_i)]
+\end{equation}
+\paragraph{
+Usando la ecuación ~\ref{eq:FormaGeneralDeLaDeriva} se tiene:
+}
+\begin{equation}
+b_s = \sum_{i=1}^n d_{i,s} \left(\sum_{q=1}^S b_q f_q(u_i)\right)
+\end{equation}
+\paragraph{
+A partir de la ecuación anterior se obtiene:
+}
+\begin{equation}
+b_s =  \sum_{q=1}^S b_q \left(\sum_{i=1}^n d_{i,s} f_q(u_i)\right)
+\end{equation}
+\paragraph{
+Si las funciones $f_s(u)$ son linealmente independientes, de la ecuación anterior se deduce que:
+}
+\begin{equation}
+\label{eq:DerivasLinealmenteIndependiente}
+\sum_{i=1}^n d_{i,s} f_q(u_i)
+\cases{1 &\textit{ si $q = s$} \cr\cr
+0 &\textit{ si $q \not= s$}}
+\end{equation}
+\paragraph{
+La varianza para cada coeficiente estimado $b_s^*$ es:
+}
+\begin{equation}
+\label{eq:VarianzaDeLaEstimacionParaUnCoeficiente}
+V[b_s^*] = V\left[\sum_{i=1}^n d_{i,s} Z(u_i)\right]
+\end{equation}
+\paragraph{
+Y dado que la \emph{varianza de la estimación} será finita, se cumple la condición:
+}
+\begin{equation}
+\label{eq:VarianzaFinitaDelCoeficiente}
+\sum_{i=0}^n d_{i,s} = 0
+\end{equation}
+\paragraph{
+Usando la ecuación ~\ref{eq:VarianzaDeLaEstimacionParaUnCoeficiente} se calcula:
+}
+\begin{equation}
+V[b_s^*]=\sum_{i=1}^n \sum_{j=1}^n d_{i,s} d_{j,s} \gamma(u_i - u_j)
+\end{equation}
+\paragraph{
+Si se utiliza el \emph{multiplicador de Lagrange} para agregar las condiciones ~\ref{eq:VarianzaFinitaDelCoeficiente} y ~\ref{eq:DerivasLinealmenteIndependiente}; y luego se minimiza la función, se obtiene un \emph{sistema de kriging} semejante a los anteriores.
+}
+\begin{equation}
+\sum_{j=1}^n \gamma(u_i - u_j) + \mu_{0,s} + \sum_{q=1}^S \mu_{q,s} f_s(u) = 0 \forall i = 1,...,n
+\end{equation}
+\begin{equation}
+\sum_{i=1}^n d_{i,s} = 0
+\end{equation}
+\begin{equation}
+\sum_{i=1}^n d_{i,s} f_q(u_i) \cases{1 & \textit{ si $q = s$} \cr\cr 0 & \textit{si $q \not = s$}}
+\end{equation}
+\paragraph{
+Al resolver el sistema de ecuaciones anterior para $s= 1,...,S$ se obtienen los coeficientes $d_{i,s}$ y utilizando a estos últimos los $b_s$. Esta aproximación tiene el problema que el cálculo de los coeficientes necesita de los variogramas. El procedimiento iterativo siguiente realiza una estimación del \emph{variograma teórico} para resolver el conflicto.
+}
+\begin{description}
+\item[1] Determinar el tipo de la deriva (usualmente el orden del polinomio).
+\item[2] Desarrollar un variograma teórico $\gamma$ y calcular los coeficientes de la deriva.
+\item[3] Calcular el variograma experimental de los residuos $Y(u)$.
+\item[4] Comparar los variogramas teórico y experimentales desarrollados en los pasos 2 y 3. Parar si la correspondencia entre las dos curvas es buena. Sino repetir el paso 2 con un nuevo variograma teórico reajustado al variograma experimental.
+\end{description}
+\paragraph{
+Una vez que los variogramas hayan sido calculados se procede con la estimación para un \emph{punto} o un \emph{bloque} de forma semejante a como se lleva a cabo el kriging ordinario:
+}
+\begin{equation}
+Z^*(u) = \sum_{i=1}^n \lambda_i Z(u_i)
+\end{equation}
+\paragraph{
+La condición de \emph{imparcialidad} que mantiene a la variable aleatoria insesgada es:
+}
+\begin{equation}
+E\left[\sum_{i=1}^n \lambda_i Z(u_i) - Z(u)\right]=0
+\end{equation}
+\paragraph{
+Al usar las ecuaciones ~\ref{eq:VariableAleatoriaRegionalizadaConDeriva} y ~\ref{eq:FormaGeneralDeLaDeriva} se tiene:
+}
+\begin{equation}
+\sum_{i=1}^n \lambda_i \sum_{s=0}^S b_s f_s(u_i) - \sum_{s=0}^S b_s f_s(u)
+\end{equation}
+\paragraph{
+Al sacar factor común se tiene:
+}
+\begin{equation}
+\sum_{s=0}^S b_s \left[ \sum_{i=1}^n \lambda_i f_s(u_i) - f_s(u) \right] = 0
+\end{equation}
+\paragraph{
+La ecuación anterior se debería mantener para cualquier $b_s$. Entonces se cumplirá si:
+}
+\begin{equation}
+\sum_{i=1}^n \lambda_i f_s(u_i) - f_s(u) = 0 \forall s = 0,...,S
+\end{equation}
+\paragraph{
+La \emph{varianza de la estimación} es:
+}
+\begin{equation}
+\sigma^2(u) = V[Z(u) - Z^*(u)] = - \sum_{j=1}^n \sum_{i=1}^n \lambda_j \lambda_i \gamma(u_i - u_j) + 2 \sum_{i=1}^n \lambda_i \gamma(u_i -u)
+\end{equation}
+\paragraph{
+Si se aplican los \emph{multiplicadores de Lagrange} correspondientes y se minimiza la ecuación resultante se obtiene el \emph{sistema de kriging}:
+}
+\begin{equation}
+\sum_{j=1}^n \lambda_j \gamma(u_i - u_j) + \sum_{s=0}^S \mu_s f_s(u_i) = \gamma(u_i - u) \textit{ } \forall i = 1,...,n
+\end{equation}
+\begin{equation}
+\sum_{i=1}^n \lambda_i f_s(u_i) = f_s(u) \textit{ } \forall s = 0,...,S
+\end{equation}
+\paragraph{
+El \emph{kriging universal} fue el primer método geoestadístico para las \emph{funciones aleatorias no estacionarias}. La estimación iterativa del variograma consume una gran cantidad de tiempo y no hay garantías de que los resultados converjan.
+}
+
+
+\subsection{Kriging con Deriva Externa}
+\paragraph{
+Si se supone que existe la variable aleatoria regionalizada $Y(u)$ que está relacionada linealmente con $Z(u)$. La hipótesis del \emph{valor esperado constante} es reemplazado por:
+}
+\begin{equation}
+E[Z(u)|Y(u)] = a + b Y(u)
+\end{equation}
+\paragraph{
+Dado que $a$ y $b$ son constantes desconocidas, el estimador lineal debería ser \emph{insesgado} para cualquier valor de $a$ y $b$:
+}
+\begin{equation}
+Z^*(u) = \sum_{i=1}^n \lambda_i Z(u_i)
+\end{equation}
+\paragraph{
+Minimizando la \emph{varianza de la estimación} bajo las precondiciones que se mencionaron se tiene:
+}
+\begin{equation}
+\sum_{j=1}^I \lambda_j \gamma(u_i - u_j) + \mu_1 + \mu_2 Y(u_i) = \gamma(u_i - u) \forall i = 1,...,I
+\end{equation}
+\begin{equation}
+\sum_{j=1}^I \lambda_j = 1
+\end{equation}
+\begin{equation}
+\sum_{j=1}^I \lambda_j Y(u_j) = Y(u)
+\end{equation}
+\paragraph*{
+Es deseable aplicar \emph{kriging con deriva externa}\footnotemark[24] si la información secundaria existe en una alta resolución espacial con respecto a la variable principal y se encuentra distribuida dentro de una grilla.
+}
+\footnotetext[24]{O External Drift Kriging (EDK) en inglés.}
+
+
+
+\section{Actualización Simple}
+\paragraph{
+La \emph{actualización simple} es un método de kriging que utiliza \emph{información adicional} para mejorar sus resultados.
+}
+\paragraph{
+Si se tiene en cuenta que la \emph{variable secundaria} $L(u)$ complementa a la \emph{variable primaria} $Z(u)$, dado que $L(u)$ está disponible para cada punto del dominio y se encuentra relacionada con $Z(u)$ mediante la \emph{esperanza condicional}:
+}
+\begin{equation}
+E[Z(u) | L(u) = l] = m_{l}
+\end{equation}
+\paragraph{
+Y mediante la \emph{varianza condicional}:
+}
+\begin{equation}
+V[Z(u)|L(u) = l] = \sigma_{l}^2
+\end{equation}
+\paragraph{
+Una primera estimación de $Z(u)$ basada solamente en $L(u)$:
+}
+\begin{equation}
+Z'(u) = m_l + \varepsilon_l
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$\varepsilon_l$] Error aleatorio.
+\end{description}
+\paragraph{
+Tal que $E[\varepsilon_l] = 0$ y su varianza es $\sigma_l^2$. Si se usa $Z'(u)$ combinadas con las observaciones $Z(u_i)$ para la estimación de $Z(u)$, se tiene:
+}
+\begin{equation}
+Z^*(u) = \lambda_0 Z'(u) + \sum_{i=1}^n \lambda_i Z(u_i)
+\end{equation}
+\paragraph{
+Luego, la \emph{varianza de la estimación} estaría dada por:
+}
+\begin{equation}
+V[Z(u)-Z^*(u)]
+\end{equation}
+\begin{equation}
+- \sum_{j=1}^n \sum_{i=1}^n \lambda_j \lambda_i \gamma(u_i - u_j) + 2 \sum_{i=1}^n \lambda_i (1-\lambda_0) \gamma(u_i - u) + \lambda_0^2 E[\varepsilon_{l}^2]
+\end{equation}
+\paragraph{
+Y al minimizar la \emph{varianza de la estimación} de forma que sea \emph{insesgada} mediante el \emph{multiplicador de Lagrange} se tiene:
+}
+\begin{equation}
+\sum_{j=1}^n \lambda_j \gamma(u_i - u_j) + \mu = (1-\lambda_0)\gamma(u_i-u) \forall i = 1,...,n
+\end{equation}
+\begin{equation}
+\sum_{j=1}^n \lambda_j \gamma(u - u_j) + \mu =  \lambda_0 \sigma_{l}^2
+\end{equation}
+\begin{equation}
+\sum_{j=0}^n \lambda_j = 1
+\end{equation}
+\paragraph{
+El la práctica la información adicional es de forma discreta y existe para cada localización. Para cada clase $l$ la media y la varianza pueden ser calculadas por:
+}
+\begin{equation}
+m_l = \frac{\sum_{i=1}^n Z(u_i)}{\sum_{i=1}^n 1} ; L(u_i) = l
+\end{equation}
+\begin{equation}
+\sigma_l^2 = \frac{\sum_{i=1}^n (Z(u_i)-m_l)^2}{(\sum_{i=1}^n 1)-1}; L(u_i) = l
+\end{equation}
+
+
+
+\section{Kriging sobre Series Temporales}
+\paragraph{
+Los métodos geoestadísticos fueron pensados para problemas mineros y geológicos, donde para cada localización se realizaba una medición. Aunque en muchas otras aplicaciones la misma localización puede ser usada para varias mediciones. Por ejemplo, las precipitaciones o la calidad del agua subterránea son medidas regularmente en el tiempo. La cuestión es como modelar y utilizar de forma geoestadística estas mediciones.
+}
+\paragraph{
+Una forma posible de incluir el tiempo es extendiendo la hipótesis intrínseca con la dimensión del tiempo. Esto significa que las localizaciones de la muestra consiste de dos partes: una \emph{espacial} (1, 2 o 3 dimensiones) y una \emph{temporal}. Esta aproximación es razonable para \emph{variables aleatorias} de tiempo continuo como la calidad del agua subterránea. Aunque no es apropiada para parámetros basados en eventos (en las precipitaciones no se puede usar la precipitación del 1 de Junio y del 30 de Junio para calcular la del 15 de Junio).
+}
+\paragraph{
+Otra posible extensión es el uso de los datos correspondientes a un mismo tiempo como una realización, y suponer que las diferentes realizaciones corresponden a un mismo proceso. Este método no excluye al primero, los instantes de un proceso espacio-temporal intrínseco son también intrínsecos en el espacio, y los variogramas espaciales son los mismos.
+}
+
+
+\subsection{Intrínsecas en el espacio-tiempo}
+\paragraph{
+La función aleatoria $Z(u,t)$ es intrínseca en el espacio-tiempo si:
+}
+\begin{equation}
+E[Z(u,t)] = m
+\end{equation}
+\paragraph{
+El \emph{semivariograma} espacio temporal es independiente de la localización $u$ y del tiempo $t$:
+}
+\begin{equation}
+\gamma(h,\Delta t) = \frac{1}{2}V[Z(u+h,t+\Delta t) -Z(u,t)]
+\end{equation}
+\paragraph{
+El problema que surge al calcular los \emph{semivariogramas espacio temporales} es que no hay una función de distancia en común. Las distancias espaciales pueden ser calculadas, al igual que las diferencias de tiempo, pero lo que no se conoce es el equivalente espacial para una diferencia de tiempo. Esto se puede obtener calculando los semivariogramas experimentales para el espacio y el tiempo de forma separada.
+}
+\paragraph{
+Para la componente temporal:
+}
+\begin{equation}
+\gamma_T^*(\Delta t) = \frac{1}{2 N_T(\Delta t)} \sum_{(i,j) \in R_T(\Delta t)} (Z(u_i,t_i)-Z(u_j,t_j))^2
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$R_T(g)$] $\{ (i,j); g - \varepsilon \leq |t_i - t_j| \leq g + \varepsilon \textit{ y } (u_i = u_j) \}$
+\item[$N_T(g)$] Cantidad de elementos en $R_T(g)$.
+\end{description}
+\paragraph{
+Para la estructura espacial:
+}
+\begin{equation}
+\gamma_S^*(h) = \frac{1}{2 N_S(h)} \sum_{(i,j) \in R_S(h)} (Z(u_i,t_i)-Z(u_j,t_j))^2
+\end{equation}
+\paragraph{
+Donde:
+}
+\begin{description}
+\item[$R_S(g)$] $\{ (i,j); g - \varepsilon \leq |u_i - u_j| \leq g + \varepsilon \textit{ y } | t_i - t_j | \leq \delta \}$
+\item[$N_S(g)$] Cantidad de elementos en $R_S(g)$.
+\end{description}
+\paragraph{
+Luego, existen dos situaciones:
+}
+\begin{itemize}
+\item El tipo de los dos variogramas experimentales son similares, tienen el mismo \emph{efecto pepita} y el mismo \emph{tope}. Esto significa que cuanto mucho se observará una \emph{anisotropía geométrica} que será tratada con una transformación lineal, resultando un modelo isotrópico. La \emph{distancia} de un vector $(h,\Delta t)$ se define como:
+\begin{equation}
+|(h,\Delta t)| = \sqrt{ | h | ^2 + k_t | \Delta t | ^2}
+\end{equation}
+\item El tipo de los dos variogramas experimentales son diferentes, teniendo una forma diferente y/o un tope distinto. En este caso se modelará un variograma teórico de acuerdo a una \emph{anisotropía zonal}. En este caso el \emph{variograma espacio temporal} $\gamma_{ST}(h,\Delta t)$ puede ser escrito como:
+\begin{equation}
+\gamma_{ST}(h,\Delta t) = \gamma_S(h) + \gamma_T(\Delta h)
+\end{equation}
+\end{itemize}
+\paragraph{
+En ambos casos el \emph{sistema de kriging} se calcula de igual manera que en casos anteriores.
+}
+
+
+\subsection{Intrínsecas en el espacio e independientes del tiempo}
+\paragraph{
+La función aleatoria $Z(u,t)$ es espacialmente intrínseca con el \emph{variograma} independiente del tiempo si:
+}
+\begin{equation}
+E[Z(u,t)] = m
+\end{equation}
+\paragraph{
+El \emph{variograma espacial} es independiente de la localización $u$ y del tiempo $t$ si $\Delta t \leq \delta$:
+}
+\begin{equation}
+\gamma(h) = \frac{1}{2} V[Z(u+h,t+\Delta t) - Z(u,t)]
+\end{equation}
+
+
+\subsection{Intrínsecas en el espacio y dependientes del tiempo}
+\paragraph{
+La función aleatoria $Z(u,t)$ es espacialmente intrínseca con el \emph{variograma} dependiente del tiempo si:
+}
+\begin{equation}
+E[Z(u,t)] = m(t)
+\end{equation}
+\paragraph{
+El \emph{variograma espacial} para un tiempo $t$ es independiente de la localización $u$ si $\Delta t \leq \delta$ y $k(t)$ es una función de tiempo dependiente:
+}
+\begin{equation}
+\gamma(h,t) = k(t) \frac{1}{2} V[Z(u+h,t+\Delta t) - Z(u,t)]
+\end{equation}
+\paragraph{
+Por ejemplo:
+}
+\begin{itemize}
+\item Semivariograma proporcional con la media:
+\begin{equation}
+k(t) = m(t)^2
+\end{equation}
+Esto significa que $\frac{Z(u,t)}{m(t)}$ es espacialmente intrínseca con un variograma independiente del tiempo.
+\item Semivariograma proporcional con la varianza:
+\begin{equation}
+k(t) = V[Z(u,t)] \textit{ con $t$ fijo}
+\end{equation}
+Esto significa que la estructura de correlación se preserva a través del tiempo.
+\end{itemize}
+
+
+\subsection{Series temporales interpretadas como diferentes realizaciones}
+\paragraph{
+En el caso de parámetros basados en eventos o con cambios bruscos, las series temporales pueden ser utilizadas para un análisis mas profundo de la estructura de correlación espacial. Esto requiere que se asuman como similares aquellos procesos observados en \emph{instantes de tiempo cercanos}, pero la similitud es solo aceptada en la correlación de los eventos en la distribución espacial.
+}
+\paragraph{
+Si esto se cumple, puede ser detectado mediante el cálculo del \emph{coeficiente de correlación} $\rho$ para series temporales de los distintos pares de localizaciones $(u_i,u_j)$:
+}
+\begin{equation}
+\rho_{ij} = \frac{Cov_T(Z(u_i,t),Z(u_j,t))}{\sqrt{V[Z(u_i,t)] V[Z(u_j,t)]}}
+\end{equation}
+\paragraph{
+Siendo la \emph{covarianza temporal}:
+}
+\begin{equation}
+Cov_T(Z(u_i,t),Z(u_j,t)) = E[{Z(u_i,t) - E[Z(u_i,t)]} {Z(u_j,t) - E[Z(u_j,t)]}]
+\end{equation}
+\paragraph{
+El \emph{coeficiente de correlación} es el \emph{coeficiente temporal estandarizado} entre dos series temporales, donde:
+}
+\begin{description}
+\item[valor positivo (max: $1$)] Relación lineal positiva fuerte.
+\item[valor neutral $0$] Sin relación lineal.
+\item[valor negativo (min: $-1$)] Relación lineal negativa fuerte.
+\end{description}
+\paragraph{
+Si al coeficiente anterior se lo calcula para un numero de pares, de tal forma que denote una función con respecto a la distancia entre los pares, mostraría una figura similar a la obtenida por una \emph{función de covarianza espacial} (Función ~\ref{eq:Covarianza}, Figura ~\ref{fig:VariogramaVSCovarianza}).
+}
+\paragraph{
+Si la \emph{hipótesis de similitud} es conocida los \emph{coeficientes de correlación} pueden utilizarse para:
+}
+\begin{itemize}
+\item Una nube de covarianzas, similar a la nube del variograma, que puede ser utilizada para el cálculo del kriging.
+\item La información contenida en la estructura de la correlación espacial, que puede ser utilizada para futuras optimizaciones de la función de correlación teórica.
+\end{itemize}
