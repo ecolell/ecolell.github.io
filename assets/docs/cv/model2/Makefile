@@ -9,20 +9,19 @@ ifeq ($(WIN_SUFFIX),$(SHELL_SUFFIX))
 else
         os=linux
 	cmdsep=;
-	viewer=evince
+	viewer=open
 endif
 
-all: cv2.pdf
+all: cv2.pdf cv2.en.pdf
 
-cv2.pdf: cv2.tex
-	pdflatex -interaction=nonstopmode $(name).tex
-	#bibtex $(name)
-	#makeindex $(name).idx
-	pdflatex -interaction=nonstopmode $(name).tex
-	pdflatex -interaction=nonstopmode $(name).tex
+%.pdf: %.tex
+	pdflatex -interaction=nonstopmode $<
+	pdflatex -interaction=nonstopmode $<
+	pdflatex -interaction=nonstopmode $<
 
 view: all
-	$(viewer) $(name).pdf
+	$(viewer) cv2.pdf
+	$(viewer) cv2.en.pdf
 
 clean:
 	rm -f *.idx *.dvi *.log *.aux *.ps *.pdf *.bbl *.blg *.ilg *.ind *.lof *.out *.toc *.snm *.nav cv2.synctex.gz

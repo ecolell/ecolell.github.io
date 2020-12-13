@@ -9,7 +9,7 @@ ifeq ($(WIN_SUFFIX),$(SHELL_SUFFIX))
 else
         os=linux
 	cmdsep=;
-	viewer=evince
+	viewer=open
 endif
 
 all: cv1.pdf

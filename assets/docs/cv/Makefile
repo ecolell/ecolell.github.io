@@ -13,8 +13,23 @@ else
 endif
 
 all:
-	cd model1 $(cmdsep) make $(cmdsep) cd ..
-	cd model2 $(cmdsep) make $(cmdsep) cd ..
+	$(MAKE) -C model1 all
+	$(MAKE) -C model2 all
+
+
+view:
+	$(MAKE) -C model1 view
+	$(MAKE) -C model2 view
+
+
+macos-install:
+	sudo port install \
+		texlive-lang-cjk \
+		texlive-lang-spanish \
+		texlive-lang-chinese \
+		texlive-fonts-recommended \
+		texlive-latex-recommended \
+		texlive-xetex
 
 clean:
 	cd model1 $(cmdsep) make clean $(cmdsep) cd ..
