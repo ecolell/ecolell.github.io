@@ -35,8 +35,10 @@
 \setlength\parindent{0pt} % Removes all indentation from paragraphs
 
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont {Adobe Garamond Pro} % Main document font
-\setsansfont {Gill Sans} % Used in the from address line above the to address
+% \setmainfont {Adobe Garamond Pro} % Main document font
+% \setsansfont {Gill Sans} % Used in the from address line above the to address
+\setmainfont{Liberation Serif} % Main document font
+\setsansfont{DejaVu Sans} % Sans-serif font
 
 \renewcommand{\normalsize}{\fontsize{12.5}{17}\selectfont} % Sets the font size and leading
 
@@ -63,7 +65,7 @@
 \firsthead{
 \centering
 {\addfontfeature{LetterSpace=20.0}\fontsize{36}{36}\selectfont\scshape \usekomavar{fromname}}\\[5mm]
-\fontsize{21}{21}\selectfont\scshape Full Stack Developer at SquareTradeGo} % Your current job title
+\fontsize{21}{21}\selectfont\scshape Full Stack Developer at Unbridaled.ai} % Your current job title
 
 %----------------------------------------------------------------------------------------
 %  FOOTER SECTION
@@ -88,20 +90,25 @@
 %----------------------------------------------------------------------------------------
 
 \begin{letter}{ % Address of the company you are applying to
-HR Dept. --- Corporation\\
-123 Pleasant Lane\\
-12345 City, State
+HR Dept. --- FlyFlat\\
+1005 Mansell Avenue\\
+Unit B\\
+78702 Austin, TX
 }
 
 %\setkomavar{subject}{Cover Letter} % This is the bold text saying 'Cover Letter', remove it if you don't like it
 
 \opening{Dear Recruiter,}
 
-I am writing to you in order to approach to you my resume. --- just mentioned you are in the search for a Core Lab Full Stack Developer, so please take in account my CV for the position.\\
+I am writing to you in order to approach to you my resume. --- just mentioned you are in the search for a Senior Python Web Developer, so please take in account my CV for the position.\\
 
-I enjoy developing innovative projects, collaborate in the design, and test new tools to accelerate the progress of the project. I tend to be a responsible and persevering person. In the past I have worked on challenging projects, and I think I can help in the development of your project.\\
+I collaborated for 9+ years as a Full Stack Developer maintaing multiple e-commerce platforms using technologies like Flask, FastAPI, PostgreSQL, React, ObjectiveC, and multiple 3rd party API integration.\\
 
-I would appreciate the opportunity to meet with you to discuss how my qualifications will be beneficial to your organization’s success. I hope you contact me through my phone number \usekomavar{fromphone} or we could organize an online call.\\
+As a Bioinformatic Master's Degree, I developed and maintained a cientific server \\ https://mistic2.leloir.org.ar developed with similar backend technologies like Celery over RabbitMQ and Auth0.\\
+
+I woked with Rails in the past, I believe I could learn the details and adapt in order to help to achieve your goal.\\
+
+If you feel I could fit your needs, let's schedule a call through eloy.colell@gmail.com.\\
 
 Sincerely yours, \\ \\ \\
 \usekomavar{signature}
